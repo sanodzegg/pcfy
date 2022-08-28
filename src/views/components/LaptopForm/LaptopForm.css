@@ -1,0 +1,159 @@
+.laptopFormWrapper {
+  max-width: 1225px;
+  margin: 0 auto;
+  margin-top: 25px;
+}
+.laptopFormWrapper form {
+  max-width: 875px;
+  margin: 0 auto;
+  margin-top: 70px;
+}
+.laptopFormWrapper form .imgUploadWrapper {
+  width: 100%;
+  height: 420px;
+  border: dashed 2px #4386A9;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.laptopFormWrapper form .imgUploadWrapper span {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+  text-align: center;
+  max-width: 195px;
+  color: #4386A9;
+}
+.laptopFormWrapper form .imgUploadWrapper button {
+  background-color: #62A1EB;
+  font-size: 20px;
+  line-height: 24.42px;
+  padding: 15px 60px;
+  text-align: center;
+  border: unset;
+  outline: unset;
+  color: #fff;
+  border-radius: 10px;
+  max-width: 385px;
+  cursor: pointer;
+  font-size: 20px;
+  margin-top: 65px;
+}
+.laptopFormWrapper form .imgUploadWrapper input[type=file],
+.laptopFormWrapper form .imgUploadWrapper input[type=image] {
+  display: none;
+}
+.laptopFormWrapper form .imgUploadWrapper input[type=image] {
+  max-width: 120%;
+  max-height: 120%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.laptopFormWrapper .laptopName {
+  margin-top: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  -moz-column-gap: 50px;
+       column-gap: 50px;
+}
+.laptopFormWrapper .laptopName div {
+  width: 100%;
+}
+.laptopFormWrapper .laptopName div label {
+  display: block;
+  font-size: 18px;
+  line-height: 21px;
+  font-weight: 500;
+}
+.laptopFormWrapper .laptopName div span {
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 300;
+  display: block;
+  color: #2E2E2E;
+}
+.laptopFormWrapper .laptopName div input {
+  margin: 10px 0;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 15px 15px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 21px;
+  border-radius: 10px;
+  border: 2px solid #8AC0E2;
+  outline: unset;
+}
+.laptopFormWrapper .laptopName div input::-moz-placeholder {
+  font-size: 16px;
+  line-height: 21px;
+  font-weight: 400;
+}
+.laptopFormWrapper .laptopName div input:-ms-input-placeholder {
+  font-size: 16px;
+  line-height: 21px;
+  font-weight: 400;
+}
+.laptopFormWrapper .laptopName div input::placeholder {
+  font-size: 16px;
+  line-height: 21px;
+  font-weight: 400;
+}
+.laptopFormWrapper .laptopName .laptopSelector {
+  position: relative;
+  width: 100%;
+  padding: 15px 20px 15px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #EBEBEB;
+  border-radius: 10px;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.laptopFormWrapper .laptopName .laptopSelector span {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+}
+.laptopFormWrapper .laptopName .laptopSelector svg.displayed {
+  transform: rotate(180deg);
+}
+.laptopFormWrapper .laptopName .laptopSelector.disabled {
+  pointer-events: none !important;
+}
+.laptopFormWrapper .laptopName .laptopSelector .laptopOptions {
+  top: 50px;
+  left: 0;
+  position: absolute;
+  z-index: 10;
+  width: 100%;
+  max-width: 875px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 34px rgba(0, 0, 0, 0.2509803922);
+}
+.laptopFormWrapper .laptopName .laptopSelector .laptopOptions span {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 21.5px;
+  display: block;
+  padding: 10px;
+  cursor: pointer;
+}
+.laptopFormWrapper .laptopName .laptopSelector .laptopOptions span:hover {
+  background-color: #E7F0F8;
+}
+.laptopFormWrapper .defaultHr {
+  margin: 50px 0;
+  border: 1px solid #C7C7C7;
+  width: 100%;
+}/*# sourceMappingURL=LaptopForm.css.map */

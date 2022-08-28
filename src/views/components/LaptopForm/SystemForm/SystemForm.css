@@ -1,0 +1,151 @@
+.systemFormWrapper {
+  display: flex;
+  flex-direction: column;
+}
+.systemFormWrapper .formWrapper-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  -moz-column-gap: 30px;
+       column-gap: 30px;
+}
+.systemFormWrapper .formWrapper-row .cpuSelector {
+  position: relative;
+  width: 100%;
+  padding: 15px 20px 15px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #EBEBEB;
+  border-radius: 10px;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.systemFormWrapper .formWrapper-row .cpuSelector span {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+}
+.systemFormWrapper .formWrapper-row .cpuSelector svg.displayed {
+  transform: rotate(180deg);
+}
+.systemFormWrapper .formWrapper-row .cpuSelector.disabled {
+  pointer-events: none !important;
+}
+.systemFormWrapper .formWrapper-row .cpuSelector .cpuOptions {
+  top: 50px;
+  left: 0;
+  position: absolute;
+  z-index: 10;
+  width: 100%;
+  max-width: 875px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 34px rgba(0, 0, 0, 0.2509803922);
+}
+.systemFormWrapper .formWrapper-row .cpuSelector .cpuOptions span {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 21.5px;
+  display: block;
+  padding: 10px;
+  cursor: pointer;
+}
+.systemFormWrapper .formWrapper-row .cpuSelector .cpuOptions span:hover {
+  background-color: #E7F0F8;
+}
+.systemFormWrapper .formWrapper-row .cpuCores, .systemFormWrapper .formWrapper-row .cpuFlow, .systemFormWrapper .formWrapper-row .laptopRam {
+  width: 100%;
+}
+.systemFormWrapper .formWrapper-row .cpuCores label, .systemFormWrapper .formWrapper-row .cpuFlow label, .systemFormWrapper .formWrapper-row .laptopRam label {
+  display: block;
+  font-size: 18px;
+  line-height: 21px;
+  font-weight: 500;
+}
+.systemFormWrapper .formWrapper-row .cpuCores span, .systemFormWrapper .formWrapper-row .cpuFlow span, .systemFormWrapper .formWrapper-row .laptopRam span {
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 300;
+  display: block;
+  color: #2E2E2E;
+}
+.systemFormWrapper .formWrapper-row .cpuCores input, .systemFormWrapper .formWrapper-row .cpuFlow input, .systemFormWrapper .formWrapper-row .laptopRam input {
+  margin: 10px 0;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 15px 15px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 21px;
+  border-radius: 10px;
+  border: 2px solid #8AC0E2;
+  outline: unset;
+}
+.systemFormWrapper .formWrapper-row .cpuCores input::-moz-placeholder, .systemFormWrapper .formWrapper-row .cpuFlow input::-moz-placeholder, .systemFormWrapper .formWrapper-row .laptopRam input::-moz-placeholder {
+  font-size: 16px;
+  line-height: 21px;
+  font-weight: 400;
+}
+.systemFormWrapper .formWrapper-row .cpuCores input:-ms-input-placeholder, .systemFormWrapper .formWrapper-row .cpuFlow input:-ms-input-placeholder, .systemFormWrapper .formWrapper-row .laptopRam input:-ms-input-placeholder {
+  font-size: 16px;
+  line-height: 21px;
+  font-weight: 400;
+}
+.systemFormWrapper .formWrapper-row .cpuCores input::placeholder, .systemFormWrapper .formWrapper-row .cpuFlow input::placeholder, .systemFormWrapper .formWrapper-row .laptopRam input::placeholder {
+  font-size: 16px;
+  line-height: 21px;
+  font-weight: 400;
+}
+.systemFormWrapper .formWrapper-row .radioWrapper {
+  width: 100%;
+}
+.systemFormWrapper .formWrapper-row .radioWrapper p {
+  display: block;
+  font-size: 18px;
+  line-height: 21px;
+  font-weight: 500;
+  margin-bottom: 25px;
+}
+.systemFormWrapper .formWrapper-row .radioWrapper .radios {
+  display: flex;
+  justify-content: flex-start;
+  -moz-column-gap: 30px;
+       column-gap: 30px;
+}
+.systemFormWrapper .formWrapper-row .radioWrapper .radios .customRadio {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.systemFormWrapper .formWrapper-row .radioWrapper .radios .customRadio span {
+  margin-left: 10px;
+}
+.systemFormWrapper .formWrapper-row .radioWrapper .radios .customRadio .customRadioWrapper {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #4D9AC3;
+  border-radius: 50%;
+  position: relative;
+}
+.systemFormWrapper .formWrapper-row .radioWrapper .radios .customRadio .customRadioWrapper .radioInside {
+  width: 13px;
+  height: 13px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #4D9AC3;
+  border-radius: 50%;
+  display: none;
+}
+.systemFormWrapper .formWrapper-row:nth-child(2) {
+  margin-top: 50px;
+  align-items: flex-start;
+  -moz-column-gap: 70px;
+       column-gap: 70px;
+}/*# sourceMappingURL=SystemForm.css.map */

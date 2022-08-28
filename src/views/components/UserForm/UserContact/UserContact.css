@@ -1,0 +1,31 @@
+.mail, .phoneNum {
+  margin-top: 50px;
+}
+.mail label, .phoneNum label {
+  display: block;
+  font-size: 18px;
+  line-height: 21px;
+  font-weight: 500;
+}
+.mail span, .phoneNum span {
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 300;
+  display: block;
+  color: #2E2E2E;
+}
+.mail input::-moz-placeholder, .phoneNum input::-moz-placeholder {
+  font-size: 16px;
+  line-height: 21px;
+  font-weight: 400;
+}
+.mail input:-ms-input-placeholder, .phoneNum input:-ms-input-placeholder {
+  font-size: 16px;
+  line-height: 21px;
+  font-weight: 400;
+}
+.mail input::placeholder, .phoneNum input::placeholder {
+  font-size: 16px;
+  line-height: 21px;
+  font-weight: 400;
+}/*# sourceMappingURL=UserContact.css.map */

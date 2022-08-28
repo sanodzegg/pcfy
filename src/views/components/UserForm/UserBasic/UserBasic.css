@@ -1,0 +1,51 @@
+.userFN {
+  margin-top: 100px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  -moz-column-gap: 50px;
+       column-gap: 50px;
+}
+.userFN div {
+  width: 100%;
+}
+.userFN div label {
+  display: block;
+  font-size: 18px;
+  line-height: 21px;
+  font-weight: 500;
+}
+.userFN div label span {
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 300;
+  display: block;
+  color: #2E2E2E;
+}
+.userFN div label input {
+  margin: 10px 0;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 15px 15px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 21px;
+  border-radius: 10px;
+  border: 2px solid #8AC0E2;
+  outline: unset;
+}
+.userFN div label input::-moz-placeholder {
+  font-size: 16px;
+  line-height: 21px;
+  font-weight: 400;
+}
+.userFN div label input:-ms-input-placeholder {
+  font-size: 16px;
+  line-height: 21px;
+  font-weight: 400;
+}
+.userFN div label input::placeholder {
+  font-size: 16px;
+  line-height: 21px;
+  font-weight: 400;
+}/*# sourceMappingURL=UserBasic.css.map */

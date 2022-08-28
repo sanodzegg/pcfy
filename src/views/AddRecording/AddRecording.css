@@ -1,0 +1,31 @@
+.addRecordWrapper .exitBtn {
+  cursor: pointer;
+  position: absolute;
+  left: 70px;
+  top: 50px;
+}
+.addRecordWrapper .formWrapper {
+  margin: 0 auto;
+  margin-top: 90px;
+}
+.addRecordWrapper .formWrapper .formHeader {
+  text-align: center;
+  margin: 0 auto;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+}
+.addRecordWrapper .formWrapper .formHeader span {
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 700;
+  margin: 0 25px;
+}
+.addRecordWrapper .formWrapper .formHeader span hr {
+  margin-top: 15px;
+  border: 1px solid #000;
+  width: 185px;
+}
+.addRecordWrapper .formWrapper .formHeader span:nth-child(2) hr {
+  width: 225px;
+}/*# sourceMappingURL=AddRecording.css.map */

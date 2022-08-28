@@ -1,0 +1,99 @@
+.aboutLaptopWrapper {
+  width: 100%;
+}
+.aboutLaptopWrapper .aboutLaptop-col {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  -moz-column-gap: 65px;
+       column-gap: 65px;
+}
+.aboutLaptopWrapper .aboutLaptop-col .dateInput, .aboutLaptopWrapper .aboutLaptop-col .priceInput {
+  width: 100%;
+}
+.aboutLaptopWrapper .aboutLaptop-col .dateInput label, .aboutLaptopWrapper .aboutLaptop-col .priceInput label {
+  display: block;
+  font-size: 18px;
+  line-height: 21px;
+  font-weight: 500;
+}
+.aboutLaptopWrapper .aboutLaptop-col .dateInput span, .aboutLaptopWrapper .aboutLaptop-col .priceInput span {
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 300;
+  display: block;
+  color: #2E2E2E;
+}
+.aboutLaptopWrapper .aboutLaptop-col .dateInput input, .aboutLaptopWrapper .aboutLaptop-col .priceInput input {
+  margin: 10px 0;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 15px 15px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 21px;
+  border-radius: 10px;
+  border: 2px solid #8AC0E2;
+  outline: unset;
+}
+.aboutLaptopWrapper .aboutLaptop-col .dateInput input::-moz-placeholder, .aboutLaptopWrapper .aboutLaptop-col .priceInput input::-moz-placeholder {
+  font-size: 16px;
+  line-height: 21px;
+  font-weight: 400;
+}
+.aboutLaptopWrapper .aboutLaptop-col .dateInput input:-ms-input-placeholder, .aboutLaptopWrapper .aboutLaptop-col .priceInput input:-ms-input-placeholder {
+  font-size: 16px;
+  line-height: 21px;
+  font-weight: 400;
+}
+.aboutLaptopWrapper .aboutLaptop-col .dateInput input::placeholder, .aboutLaptopWrapper .aboutLaptop-col .priceInput input::placeholder {
+  font-size: 16px;
+  line-height: 21px;
+  font-weight: 400;
+}
+.aboutLaptopWrapper .aboutLaptop-col .radioWrapper {
+  width: 100%;
+}
+.aboutLaptopWrapper .aboutLaptop-col .radioWrapper p {
+  display: block;
+  font-size: 18px;
+  line-height: 21px;
+  font-weight: 500;
+  margin-bottom: 25px;
+}
+.aboutLaptopWrapper .aboutLaptop-col .radioWrapper .radios {
+  display: flex;
+  justify-content: flex-start;
+  -moz-column-gap: 30px;
+       column-gap: 30px;
+}
+.aboutLaptopWrapper .aboutLaptop-col .radioWrapper .radios .customRadio {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.aboutLaptopWrapper .aboutLaptop-col .radioWrapper .radios .customRadio span {
+  margin-left: 10px;
+}
+.aboutLaptopWrapper .aboutLaptop-col .radioWrapper .radios .customRadio .customRadioWrapper {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #4D9AC3;
+  border-radius: 50%;
+  position: relative;
+}
+.aboutLaptopWrapper .aboutLaptop-col .radioWrapper .radios .customRadio .customRadioWrapper .radioInside {
+  width: 13px;
+  height: 13px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #4D9AC3;
+  border-radius: 50%;
+  display: none;
+}
+.aboutLaptopWrapper .aboutLaptop-col:nth-child(2) {
+  margin-top: 50px;
+}/*# sourceMappingURL=AboutLaptop.css.map */

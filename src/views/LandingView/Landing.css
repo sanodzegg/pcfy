@@ -1,0 +1,31 @@
+.landingWrapper {
+  max-width: 780px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 80px;
+  row-gap: 80px;
+  height: 90vh;
+}
+.landingWrapper .frame {
+  margin-top: 5px;
+}
+.landingWrapper .btnsWrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 25px;
+}
+.landingWrapper .btnsWrapper button {
+  background-color: #62A1EB;
+  font-size: 20px;
+  line-height: 24.42px;
+  padding: 15px 60px;
+  text-align: center;
+  border: unset;
+  outline: unset;
+  color: #fff;
+  border-radius: 10px;
+  max-width: 385px;
+  cursor: pointer;
+}/*# sourceMappingURL=Landing.css.map */

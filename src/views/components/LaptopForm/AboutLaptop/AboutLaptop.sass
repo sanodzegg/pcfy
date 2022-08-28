@@ -1,0 +1,66 @@
+@import ../../../../assets/style/mixins
+
+.aboutLaptopWrapper
+    width: 100%
+    .aboutLaptop-col
+        display: flex
+        justify-content: space-between
+        align-items: flex-start
+        column-gap: 65px
+        .dateInput, .priceInput
+            width: 100%
+            label
+                display: block
+                font-size: 18px
+                line-height: 21px
+                font-weight: 500
+            span
+                font-size: 14px
+                line-height: 21px
+                font-weight: 300
+                display: block
+                color: #2E2E2E
+            input
+                margin: 10px 0
+                @include input
+            input::placeholder
+                font-size: 16px
+                line-height: 21px
+                font-weight: 400
+        .radioWrapper
+            width: 100%
+            p
+                display: block
+                font-size: 18px
+                line-height: 21px
+                font-weight: 500
+                margin-bottom: 25px
+            .radios
+                display: flex
+                justify-content: flex-start
+                column-gap: 30px
+                .customRadio
+                    display: flex
+                    align-items: center
+                    justify-content: space-between
+                    cursor: pointer
+                    span
+                        margin-left: 10px
+                    .customRadioWrapper
+                        width: 20px
+                        height: 20px
+                        border: 2px solid #4D9AC3
+                        border-radius: 50%
+                        position: relative
+                        .radioInside
+                            width: 13px
+                            height: 13px
+                            position: absolute
+                            top: 50%
+                            left: 50%
+                            transform: translate(-50%, -50%)
+                            background-color: #4D9AC3
+                            border-radius: 50%
+                            display: none
+    .aboutLaptop-col:nth-child(2)
+        margin-top: 50px
