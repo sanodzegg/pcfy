@@ -48,4 +48,13 @@
   font-size: 16px;
   line-height: 21px;
   font-weight: 400;
+}
+.userFN .invalid label {
+  color: red;
+}
+.userFN .invalid input {
+  border: 2px solid red;
+}
+.userFN .invalid span {
+  color: red;
 }/*# sourceMappingURL=UserBasic.css.map */

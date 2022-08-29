@@ -1,20 +1,23 @@
 import { ReactComponent as Arrow } from "assets/svg/selectArrow.svg";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 
-export const UserPosition = () => {
+const data = JSON.parse(sessionStorage.getItem("data"));
+const accessible = sessionStorage.getItem("accessible") ? true : false;
+
+export const UserPosition = ({ checker, errs, show, setErrs, emitData }) => {
 
     const [displayTeam, setDisplayTeam] = useState(false);
     const [displayPos, setDisplayPos] = useState(false);
-    const [posAccessible, setPosAccessible] = useState(false);
+    const [posAccessible, setPosAccessible] = useState(accessible ? accessible : false);
   
-    const [selectedTeam, setSelectedTeam] = useState({});
+    const [selectedTeam, setSelectedTeam] = useState(data.team ? data.team : {});
     const [selectedPos, setSelectedPos] = useState({});
   
     const [teamData, setTeamData] = useState([]);
     const [optionsData, setOptionsData] = useState([]);
-  
+
     useEffect(() => {
       const getTeams = async () => {
         const response = await axios.get("https://pcfy.redberryinternship.ge/api/teams");
@@ -26,28 +29,52 @@ export const UserPosition = () => {
   
       window.scrollTo(0, 0);
     }, []);
-  
+
     const handleTeamSelect = (e) => {
       setSelectedTeam(e);
       setDisplayTeam(false);
       setPosAccessible(true);
+
+      setSelectedPos({});
+      data.position.name = null;
+
+      emitData((prev) => ({ ...prev, position: {} }));
+
+      sessionStorage.setItem("accessible", true);
+
+      setErrs((prev) => ({
+        ...prev,
+        team: true
+      }));
+
+      emitData((prev) => ({ ...prev, team: e }));
+
+      setErrs((prev) => ({
+        ...prev,
+        position: false
+      }));
     }
   
     const handlePosSelect = (e) => {
       setSelectedPos(e);
       setDisplayPos(false);
+
+      setErrs((prev) => ({
+        ...prev,
+        position: true
+      }));
+
+      emitData((prev) => ({ ...prev, position: e }));
     }
   
     const setPositions = (data) => {
       const options = data.filter((e) => e.team_id === selectedTeam.id);
       setOptionsData(options);
-  
-      console.log(options);
     }
   
     useEffect(() => {
       const getPositions = async () => {
-        if(selectedTeam.id) {
+        if(selectedTeam.id || data.position) {
           const response = await axios.get("https://pcfy.redberryinternship.ge/api/positions");
           const data = await response.data;
           setPositions(data.data);
@@ -55,11 +82,14 @@ export const UserPosition = () => {
       }
   
       getPositions();
-    }, [selectedTeam]);
+    }, [selectedTeam, data]);
+
+    const teamClass = `teamSelector${show && !errs.team ? " invalid" : ""}`;
+    const posClass = `posSelector${show && !errs.position ? " invalid" : ""}${!posAccessible ? " disabled" : ""}`
 
     return (
         <>
-            <div onClick={() => setDisplayTeam(!displayTeam)} className={`teamSelector${displayTeam ? " displaying" : ""}`}><span>{selectedTeam.name ? selectedTeam.name : "თიმი"}</span><Arrow className={displayTeam ? "displayed" : null} />
+            <div onClick={() => setDisplayTeam(!displayTeam)} className={teamClass}><span>{selectedTeam.name ? selectedTeam.name : data.team ? data.team.name : "თიმი"}</span><Arrow className={displayTeam ? "displayed" : null} />
                 {displayTeam && 
                     <div className="teamOptions">
                     {teamData.map((e, i) => {
@@ -67,7 +97,7 @@ export const UserPosition = () => {
                     })}
                     </div>}
             </div>
-            <div onClick={() => setDisplayPos(!displayPos)} className={`posSelector${displayPos ? " displaying" : ""}${!posAccessible ? " disabled" : ""}`}><span>{selectedPos.name ? selectedPos.name : "პოზიცია"}</span><Arrow className={displayTeam ? "displayed" : null} />
+            <div onClick={() => setDisplayPos(!displayPos)} className={posClass}><span>{selectedPos.name ? selectedPos.name : data.position.name ? data.position.name : "პოზიცია"}</span><Arrow className={displayTeam ? "displayed" : null} />
                 {displayPos && 
                 <div className="posOptions">
                     {optionsData.map((e, i) => {

@@ -1,6 +1,27 @@
 .mail, .phoneNum {
   margin-top: 50px;
 }
+.mail.invalid label, .mail.invalid span, .phoneNum.invalid label, .phoneNum.invalid span {
+  color: red;
+}
+.mail.invalid input, .phoneNum.invalid input {
+  border: 2px solid red;
+}
+.mail .pnWrapper, .phoneNum .pnWrapper {
+  width: auto;
+  height: auto;
+  position: relative;
+}
+.mail .pnWrapper .pnsup, .phoneNum .pnWrapper .pnsup {
+  position: absolute;
+  top: 50%;
+  left: 4%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  line-height: 21px;
+  font-weight: 400;
+  font-family: "Arial", Times, serif;
+}
 .mail label, .phoneNum label {
   display: block;
   font-size: 18px;
@@ -28,4 +49,17 @@
   font-size: 16px;
   line-height: 21px;
   font-weight: 400;
+}
+
+.phoneNum input:focus {
+  padding-left: 55px;
+}
+.phoneNum input:focus::-moz-placeholder {
+  color: transparent;
+}
+.phoneNum input:focus:-ms-input-placeholder {
+  color: transparent;
+}
+.phoneNum input:focus::placeholder {
+  color: transparent;
 }/*# sourceMappingURL=UserContact.css.map */

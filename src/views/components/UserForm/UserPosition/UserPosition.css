@@ -25,6 +25,9 @@
 .teamSelector.disabled, .posSelector.disabled {
   pointer-events: none !important;
 }
+.teamSelector.invalid, .posSelector.invalid {
+  border: 2px solid red;
+}
 .teamSelector .teamOptions, .teamSelector .posOptions, .posSelector .teamOptions, .posSelector .posOptions {
   top: 50px;
   left: 0;

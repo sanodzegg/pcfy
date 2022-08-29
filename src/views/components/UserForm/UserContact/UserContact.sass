@@ -1,5 +1,23 @@
 .mail, .phoneNum
     margin-top: 50px
+    &.invalid
+        label, span
+            color: red
+        input
+            border: 2px solid red
+    .pnWrapper
+        width: auto
+        height: auto
+        position: relative
+        .pnsup
+            position: absolute
+            top: 50%
+            left: 4%
+            transform: translate(-50%, -50%)
+            font-size: 16px
+            line-height: 21px
+            font-weight: 400
+            font-family: "Arial", Times, serif
     label
         display: block
         font-size: 18px
@@ -15,3 +33,9 @@
         font-size: 16px
         line-height: 21px
         font-weight: 400
+
+.phoneNum
+    input:focus
+        padding-left: 55px
+    input:focus::placeholder
+        color: transparent
