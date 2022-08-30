@@ -11,10 +11,11 @@ import { UserBasic } from "./UserBasic/UserBasic";
 import { UserPosition } from "./UserPosition/UserPosition";
 import { UserContact } from "./UserContact/UserContact";
 
-export const UserForm = ({ setPage }) => {
+export const UserForm = ({ setPage, emitRecording }) => {
 
-  const [showErrs, setShowErrs] = useState(false);
   const [checker, setChecker] = useState(false);
+  const [showErrs, setShowErrs] = useState(false);
+  const [canSend, setCanSend] = useState(false);
 
   const [localData, setLocalData] = useState({
     name: "",
@@ -25,60 +26,78 @@ export const UserForm = ({ setPage }) => {
     email: ""
   });
 
+  // error states
   const [basicErrs, setBasicErrs] = useState({
     firstName: {
-      valid: false,
+      valid: null,
       message: ""
     },
     lastName: {
-      valid: false,
+      valid: null,
       message: ""
     }
   });
-  
   const [posErrs, setPosErrs] = useState({
-    team: false,
-    position: false
+    team: null,
+    position: null
   });
-
   const [contactErrs, setContactErrs] = useState({
-    mail: false,
-    pn: false
+    mail: null,
+    pn: null
   });
 
-  const handleNext = (e) => {
+  const handleNext = async (e) => {
     e.preventDefault();
-
     setChecker(true);
-
-    const errObj = {...basicErrs, ...posErrs, ...contactErrs};
-
-    const inner = [];
-    Object.values(errObj).map(e => {
-      if(typeof e === "object") {
-        Object.values(e).filter(i => typeof i === "boolean" && inner.push(i));
-      }
-      typeof e !== "object" && !e.valid && inner.push(e);
-    });
-
-    const invalid = inner.some(e => e === false);
-
-    if(!invalid) {
-      sessionStorage.setItem("formPage", 1);
-      setPage(1);
-    } else setShowErrs(true);
+    setShowErrs(true);
+    setCanSend(true);
   }
 
   useEffect(() => {
-    if(sessionStorage.getItem("data")) {
-      setLocalData(JSON.parse(sessionStorage.getItem("data")));
+    const notNull = Object.values(basicErrs).some(e => e.valid || e.valid === false);
+    if(notNull) {
+      const errObj = {...basicErrs, ...posErrs, ...contactErrs};
+      const inner = [];
+
+      Object.values(errObj).map(e => {
+        if(e !== null && typeof e === "object") {
+          Object.values(e).filter(y => typeof y === "boolean" && inner.push(y));
+        } else inner.push(e);
+      });
+
+      const invalid = inner.some(e => e !== true);
+
+      const {team, position, ...recording} = localData;
+
+      if(localData.team && localData.position) {
+        recording.team = localData.team.id;
+        recording.position = localData.position.id;
+      }
+
+      emitRecording(recording);
+
+      if(invalid) {
+        setCanSend(false);
+      }
+
+      if(!invalid && canSend) {
+        sessionStorage.setItem("formPage", 1);
+        setPage(1);
+      }
+    }
+    
+  }, [basicErrs, posErrs, contactErrs, canSend]);
+
+  useEffect(() => {
+    if(sessionStorage.getItem("userData")) {
+      setLocalData(JSON.parse(sessionStorage.getItem("userData")));
     }
   }, []);
 
   useEffect(() => {
     Object.values(localData).forEach(e => {
       if(e) {
-        sessionStorage.setItem("data", JSON.stringify(localData));
+        sessionStorage.setItem("userData", JSON.stringify(localData));
       }
     });
   }, [localData]);
@@ -86,9 +105,9 @@ export const UserForm = ({ setPage }) => {
   return (
     <div className="userFormWrapper">
       <form>
-        <UserBasic checker={checker} errs={basicErrs} show={showErrs} setErrs={setBasicErrs} emitData={setLocalData} />
-        <UserPosition errs={posErrs} show={showErrs} setErrs={setPosErrs} emitData={setLocalData} />
-        <UserContact errs={contactErrs} show={showErrs} setErrs={setContactErrs} emitData={setLocalData} />
+        <UserBasic revalidate={checker} errs={basicErrs} show={showErrs} setErrs={setBasicErrs} emitData={setLocalData} />
+        <UserPosition revalidate={checker} errs={posErrs} show={showErrs} setErrs={setPosErrs} emitData={setLocalData} />
+        <UserContact revalidate={checker} errs={contactErrs} show={showErrs} setErrs={setContactErrs} emitData={setLocalData} />
         <div className="btnWrapper">
           <button onClick={(e) => handleNext(e)}>შემდეგი</button>
         </div>

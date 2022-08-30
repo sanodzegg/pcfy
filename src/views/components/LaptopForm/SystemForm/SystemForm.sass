@@ -20,6 +20,8 @@
             border-radius: 10px
             cursor: pointer
             user-select: none
+            &.invalid
+                border: 2px solid red
             span
                 font-weight: 500
                 font-size: 18px
@@ -48,8 +50,13 @@
                     cursor: pointer
                 span:hover
                     background-color: #E7F0F8
-        .cpuCores, .cpuFlow, .laptopRam
+        .cpuCores, .cpuThreads, .laptopRam
             width: 100%
+            &.invalid
+                label, span
+                    color: red
+                input
+                    border: 2px solid red
             label
                 display: block
                 font-size: 18px
@@ -70,6 +77,19 @@
                 font-weight: 400
         .radioWrapper
             width: 100%
+            &.invalid
+                p
+                    color: red
+            .radioLabelWrapper
+                &.flex
+                    display: flex
+                    justify-content: flex-start
+                    align-items: center
+                .error
+                    margin-left: 15px
+                    width: 22px
+                    height: 20px
+                    align-self: flex-start
             p
                 display: block
                 font-size: 18px

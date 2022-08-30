@@ -14,7 +14,7 @@
 }
 .mail .pnWrapper .pnsup, .phoneNum .pnWrapper .pnsup {
   position: absolute;
-  top: 50%;
+  top: 49.5%;
   left: 4%;
   transform: translate(-50%, -50%);
   font-size: 16px;
@@ -51,8 +51,11 @@
   font-weight: 400;
 }
 
-.phoneNum input:focus {
-  padding-left: 55px;
+.phoneNum input {
+  padding-left: 55px !important;
+}
+.phoneNum input:not(:focus) {
+  padding-left: 15px !important;
 }
 .phoneNum input:focus::-moz-placeholder {
   color: transparent;

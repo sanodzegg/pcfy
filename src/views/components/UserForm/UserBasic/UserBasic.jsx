@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 
-const data = JSON.parse(sessionStorage.getItem("data"));
+export const UserBasic = ({ revalidate, errs, show, setErrs, emitData }) => {
+  const data = JSON.parse(sessionStorage.getItem("userData"));
 
-export const UserBasic = ({ checker, errs, show, setErrs, emitData }) => {
-
-  const [fnValue, setfnValue] = useState(data.name ? data.name : "");
-  const [lnValue, setlnValue] = useState(data.surname ? data.surname : "");
+  const [fnValue, setfnValue] = useState(data?.name ? data.name : "");
+  const [lnValue, setlnValue] = useState(data?.surname ? data.surname : "");
 
   const ulang = /^[\u10A0-\u10FF]+$/;
 
@@ -67,18 +66,25 @@ export const UserBasic = ({ checker, errs, show, setErrs, emitData }) => {
     }
   }
 
+  useEffect(() => {
+    if(revalidate) {
+      handleFN();
+      handleLN();
+    }
+  }, [revalidate]);
+
   return (
     <div className="userFN">
         <div className={show && errs.firstName.valid == false ? "invalid" : ""}>
             <label htmlFor="fname">სახელი</label>
             <input onChange={(e) => setfnValue(e.target.value)} onBlur={handleFN} type="text" placeholder="გრიშა" name="fname" value={fnValue ? fnValue : ""} />
-            <span>{show && errs.firstName.message ? errs.firstName.message : "მინიმუმ 2 სიმბოლო, ქართული ასოები"}</span>
+            <span>{errs.firstName.message ? errs.firstName.message : "მინიმუმ 2 სიმბოლო, ქართული ასოები"}</span>
         </div>
 
         <div className={show && errs.lastName.valid == false ? "invalid" : ""}>
             <label htmlFor="lname">გვარი</label>
             <input onChange={(e) => setlnValue(e.target.value)} onBlur={handleLN} type="text" placeholder="ბაგრატიონი" name="lname" value={lnValue ? lnValue : ""} />
-            <span>{show && errs.lastName.message ? errs.lastName.message : "მინიმუმ 2 სიმბოლო, ქართული ასოები"}</span>
+            <span>{errs.lastName.message ? errs.lastName.message : "მინიმუმ 2 სიმბოლო, ქართული ასოები"}</span>
         </div>
     </div>
   );

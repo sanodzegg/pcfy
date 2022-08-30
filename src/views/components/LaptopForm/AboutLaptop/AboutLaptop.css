@@ -51,39 +51,39 @@
   line-height: 21px;
   font-weight: 400;
 }
-.aboutLaptopWrapper .aboutLaptop-col .radioWrapper {
+.aboutLaptopWrapper .radioWrapper {
   width: 100%;
 }
-.aboutLaptopWrapper .aboutLaptop-col .radioWrapper p {
+.aboutLaptopWrapper .radioWrapper p {
   display: block;
   font-size: 18px;
   line-height: 21px;
   font-weight: 500;
   margin-bottom: 25px;
 }
-.aboutLaptopWrapper .aboutLaptop-col .radioWrapper .radios {
+.aboutLaptopWrapper .radioWrapper p .radios {
   display: flex;
   justify-content: flex-start;
   -moz-column-gap: 30px;
        column-gap: 30px;
 }
-.aboutLaptopWrapper .aboutLaptop-col .radioWrapper .radios .customRadio {
+.aboutLaptopWrapper .radioWrapper p .radios .customRadio {
   display: flex;
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
 }
-.aboutLaptopWrapper .aboutLaptop-col .radioWrapper .radios .customRadio span {
+.aboutLaptopWrapper .radioWrapper p .radios .customRadio span {
   margin-left: 10px;
 }
-.aboutLaptopWrapper .aboutLaptop-col .radioWrapper .radios .customRadio .customRadioWrapper {
+.aboutLaptopWrapper .radioWrapper p .radios .customRadio .customRadioWrapper {
   width: 20px;
   height: 20px;
   border: 2px solid #4D9AC3;
   border-radius: 50%;
   position: relative;
 }
-.aboutLaptopWrapper .aboutLaptop-col .radioWrapper .radios .customRadio .customRadioWrapper .radioInside {
+.aboutLaptopWrapper .radioWrapper p .radios .customRadio .customRadioWrapper .radioInside {
   width: 13px;
   height: 13px;
   position: absolute;

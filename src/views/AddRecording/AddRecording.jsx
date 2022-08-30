@@ -9,6 +9,8 @@ import { LaptopForm } from "views/components/LaptopForm/LaptopForm";
 
 export const AddRecording = () => {
 
+    const [userRecording, setUserRecording] = useState(null);
+
     const navigate = useNavigate();
 
     const [displayForm, setDisplayForm] = useState(null);
@@ -20,6 +22,12 @@ export const AddRecording = () => {
         } else setDisplayForm(0);
     }, []);
 
+    useEffect(() => {
+        if(userRecording) {
+            console.log(userRecording);
+        }
+    }, [userRecording]);
+
     return (
         <div className="addRecordWrapper">
             <Exit className="exitBtn" onClick={() => navigate("/")} />
@@ -28,7 +36,7 @@ export const AddRecording = () => {
                     <span>თანამშრომლის ინფო {displayForm === 0 && <hr />}</span>
                     <span>ლეპტოპის მახასიათებლები {displayForm === 1 && <hr className="laptopHr" />}</span>
                 </div>
-                {displayForm === 0 ? <UserForm setPage={setDisplayForm} /> : <LaptopForm setPage={setDisplayForm} />}
+                {displayForm === 0 ? <UserForm emitRecording={setUserRecording} setPage={setDisplayForm} /> : <LaptopForm setPage={setDisplayForm} />}
             </div>
         </div>
     );

@@ -19,6 +19,15 @@
             flex-direction: column
             justify-content: center
             align-items: center
+            .error
+                margin-bottom: 20px
+                &.hidden
+                    display: none
+            &.invalid
+                border: 2px dashed #E52F2F
+                background-color: #FFF1F1
+                span
+                    color: #E52F2F
             span
                 font-weight: 500
                 font-size: 20px
@@ -34,10 +43,9 @@
             input[type="image"]
                 display: none
             input[type="image"]
-                max-width: 120%
-                max-height: 120%
-                object-fit: cover
-    .laptopName
+                max-width: 110%
+                object-fit: fill
+    .laptopBrandWrapper
         margin-top: 50px
         width: 100%
 
@@ -45,6 +53,16 @@
         justify-content: space-between
         align-items: center
         column-gap: 50px
+        .nameInput
+            &.invalid
+                input
+                    border: 2px solid red
+                span, label
+                    color: red
+        .brandInput
+            &.invalid
+                .laptopSelector
+                    border: 2px solid red
         div
             width: 100%
             label

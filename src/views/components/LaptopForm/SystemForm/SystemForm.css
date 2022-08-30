@@ -24,6 +24,9 @@
       -ms-user-select: none;
           user-select: none;
 }
+.systemFormWrapper .formWrapper-row .cpuSelector.invalid {
+  border: 2px solid red;
+}
 .systemFormWrapper .formWrapper-row .cpuSelector span {
   font-weight: 500;
   font-size: 18px;
@@ -57,23 +60,29 @@
 .systemFormWrapper .formWrapper-row .cpuSelector .cpuOptions span:hover {
   background-color: #E7F0F8;
 }
-.systemFormWrapper .formWrapper-row .cpuCores, .systemFormWrapper .formWrapper-row .cpuFlow, .systemFormWrapper .formWrapper-row .laptopRam {
+.systemFormWrapper .formWrapper-row .cpuCores, .systemFormWrapper .formWrapper-row .cpuThreads, .systemFormWrapper .formWrapper-row .laptopRam {
   width: 100%;
 }
-.systemFormWrapper .formWrapper-row .cpuCores label, .systemFormWrapper .formWrapper-row .cpuFlow label, .systemFormWrapper .formWrapper-row .laptopRam label {
+.systemFormWrapper .formWrapper-row .cpuCores.invalid label, .systemFormWrapper .formWrapper-row .cpuCores.invalid span, .systemFormWrapper .formWrapper-row .cpuThreads.invalid label, .systemFormWrapper .formWrapper-row .cpuThreads.invalid span, .systemFormWrapper .formWrapper-row .laptopRam.invalid label, .systemFormWrapper .formWrapper-row .laptopRam.invalid span {
+  color: red;
+}
+.systemFormWrapper .formWrapper-row .cpuCores.invalid input, .systemFormWrapper .formWrapper-row .cpuThreads.invalid input, .systemFormWrapper .formWrapper-row .laptopRam.invalid input {
+  border: 2px solid red;
+}
+.systemFormWrapper .formWrapper-row .cpuCores label, .systemFormWrapper .formWrapper-row .cpuThreads label, .systemFormWrapper .formWrapper-row .laptopRam label {
   display: block;
   font-size: 18px;
   line-height: 21px;
   font-weight: 500;
 }
-.systemFormWrapper .formWrapper-row .cpuCores span, .systemFormWrapper .formWrapper-row .cpuFlow span, .systemFormWrapper .formWrapper-row .laptopRam span {
+.systemFormWrapper .formWrapper-row .cpuCores span, .systemFormWrapper .formWrapper-row .cpuThreads span, .systemFormWrapper .formWrapper-row .laptopRam span {
   font-size: 14px;
   line-height: 21px;
   font-weight: 300;
   display: block;
   color: #2E2E2E;
 }
-.systemFormWrapper .formWrapper-row .cpuCores input, .systemFormWrapper .formWrapper-row .cpuFlow input, .systemFormWrapper .formWrapper-row .laptopRam input {
+.systemFormWrapper .formWrapper-row .cpuCores input, .systemFormWrapper .formWrapper-row .cpuThreads input, .systemFormWrapper .formWrapper-row .laptopRam input {
   margin: 10px 0;
   box-sizing: border-box;
   width: 100%;
@@ -85,23 +94,37 @@
   border: 2px solid #8AC0E2;
   outline: unset;
 }
-.systemFormWrapper .formWrapper-row .cpuCores input::-moz-placeholder, .systemFormWrapper .formWrapper-row .cpuFlow input::-moz-placeholder, .systemFormWrapper .formWrapper-row .laptopRam input::-moz-placeholder {
+.systemFormWrapper .formWrapper-row .cpuCores input::-moz-placeholder, .systemFormWrapper .formWrapper-row .cpuThreads input::-moz-placeholder, .systemFormWrapper .formWrapper-row .laptopRam input::-moz-placeholder {
   font-size: 16px;
   line-height: 21px;
   font-weight: 400;
 }
-.systemFormWrapper .formWrapper-row .cpuCores input:-ms-input-placeholder, .systemFormWrapper .formWrapper-row .cpuFlow input:-ms-input-placeholder, .systemFormWrapper .formWrapper-row .laptopRam input:-ms-input-placeholder {
+.systemFormWrapper .formWrapper-row .cpuCores input:-ms-input-placeholder, .systemFormWrapper .formWrapper-row .cpuThreads input:-ms-input-placeholder, .systemFormWrapper .formWrapper-row .laptopRam input:-ms-input-placeholder {
   font-size: 16px;
   line-height: 21px;
   font-weight: 400;
 }
-.systemFormWrapper .formWrapper-row .cpuCores input::placeholder, .systemFormWrapper .formWrapper-row .cpuFlow input::placeholder, .systemFormWrapper .formWrapper-row .laptopRam input::placeholder {
+.systemFormWrapper .formWrapper-row .cpuCores input::placeholder, .systemFormWrapper .formWrapper-row .cpuThreads input::placeholder, .systemFormWrapper .formWrapper-row .laptopRam input::placeholder {
   font-size: 16px;
   line-height: 21px;
   font-weight: 400;
 }
 .systemFormWrapper .formWrapper-row .radioWrapper {
   width: 100%;
+}
+.systemFormWrapper .formWrapper-row .radioWrapper.invalid p {
+  color: red;
+}
+.systemFormWrapper .formWrapper-row .radioWrapper .radioLabelWrapper.flex {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.systemFormWrapper .formWrapper-row .radioWrapper .radioLabelWrapper .error {
+  margin-left: 15px;
+  width: 22px;
+  height: 20px;
+  align-self: flex-start;
 }
 .systemFormWrapper .formWrapper-row .radioWrapper p {
   display: block;

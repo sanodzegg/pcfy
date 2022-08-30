@@ -19,6 +19,19 @@
   justify-content: center;
   align-items: center;
 }
+.laptopFormWrapper form .imgUploadWrapper .error {
+  margin-bottom: 20px;
+}
+.laptopFormWrapper form .imgUploadWrapper .error.hidden {
+  display: none;
+}
+.laptopFormWrapper form .imgUploadWrapper.invalid {
+  border: 2px dashed #E52F2F;
+  background-color: #FFF1F1;
+}
+.laptopFormWrapper form .imgUploadWrapper.invalid span {
+  color: #E52F2F;
+}
 .laptopFormWrapper form .imgUploadWrapper span {
   font-weight: 500;
   font-size: 20px;
@@ -47,12 +60,11 @@
   display: none;
 }
 .laptopFormWrapper form .imgUploadWrapper input[type=image] {
-  max-width: 120%;
-  max-height: 120%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  max-width: 110%;
+  -o-object-fit: fill;
+     object-fit: fill;
 }
-.laptopFormWrapper .laptopName {
+.laptopFormWrapper .laptopBrandWrapper {
   margin-top: 50px;
   width: 100%;
   display: flex;
@@ -61,23 +73,32 @@
   -moz-column-gap: 50px;
        column-gap: 50px;
 }
-.laptopFormWrapper .laptopName div {
+.laptopFormWrapper .laptopBrandWrapper .nameInput.invalid input {
+  border: 2px solid red;
+}
+.laptopFormWrapper .laptopBrandWrapper .nameInput.invalid span, .laptopFormWrapper .laptopBrandWrapper .nameInput.invalid label {
+  color: red;
+}
+.laptopFormWrapper .laptopBrandWrapper .brandInput.invalid .laptopSelector {
+  border: 2px solid red;
+}
+.laptopFormWrapper .laptopBrandWrapper div {
   width: 100%;
 }
-.laptopFormWrapper .laptopName div label {
+.laptopFormWrapper .laptopBrandWrapper div label {
   display: block;
   font-size: 18px;
   line-height: 21px;
   font-weight: 500;
 }
-.laptopFormWrapper .laptopName div span {
+.laptopFormWrapper .laptopBrandWrapper div span {
   font-size: 14px;
   line-height: 21px;
   font-weight: 300;
   display: block;
   color: #2E2E2E;
 }
-.laptopFormWrapper .laptopName div input {
+.laptopFormWrapper .laptopBrandWrapper div input {
   margin: 10px 0;
   box-sizing: border-box;
   width: 100%;
@@ -89,22 +110,22 @@
   border: 2px solid #8AC0E2;
   outline: unset;
 }
-.laptopFormWrapper .laptopName div input::-moz-placeholder {
+.laptopFormWrapper .laptopBrandWrapper div input::-moz-placeholder {
   font-size: 16px;
   line-height: 21px;
   font-weight: 400;
 }
-.laptopFormWrapper .laptopName div input:-ms-input-placeholder {
+.laptopFormWrapper .laptopBrandWrapper div input:-ms-input-placeholder {
   font-size: 16px;
   line-height: 21px;
   font-weight: 400;
 }
-.laptopFormWrapper .laptopName div input::placeholder {
+.laptopFormWrapper .laptopBrandWrapper div input::placeholder {
   font-size: 16px;
   line-height: 21px;
   font-weight: 400;
 }
-.laptopFormWrapper .laptopName .laptopSelector {
+.laptopFormWrapper .laptopBrandWrapper .laptopSelector {
   position: relative;
   width: 100%;
   padding: 15px 20px 15px 15px;
@@ -119,18 +140,18 @@
       -ms-user-select: none;
           user-select: none;
 }
-.laptopFormWrapper .laptopName .laptopSelector span {
+.laptopFormWrapper .laptopBrandWrapper .laptopSelector span {
   font-weight: 500;
   font-size: 18px;
   line-height: 21px;
 }
-.laptopFormWrapper .laptopName .laptopSelector svg.displayed {
+.laptopFormWrapper .laptopBrandWrapper .laptopSelector svg.displayed {
   transform: rotate(180deg);
 }
-.laptopFormWrapper .laptopName .laptopSelector.disabled {
+.laptopFormWrapper .laptopBrandWrapper .laptopSelector.disabled {
   pointer-events: none !important;
 }
-.laptopFormWrapper .laptopName .laptopSelector .laptopOptions {
+.laptopFormWrapper .laptopBrandWrapper .laptopSelector .laptopOptions {
   top: 50px;
   left: 0;
   position: absolute;
@@ -141,7 +162,7 @@
   border-radius: 10px;
   box-shadow: 0 4px 34px rgba(0, 0, 0, 0.2509803922);
 }
-.laptopFormWrapper .laptopName .laptopSelector .laptopOptions span {
+.laptopFormWrapper .laptopBrandWrapper .laptopSelector .laptopOptions span {
   font-size: 18px;
   font-weight: 400;
   line-height: 21.5px;
@@ -149,7 +170,7 @@
   padding: 10px;
   cursor: pointer;
 }
-.laptopFormWrapper .laptopName .laptopSelector .laptopOptions span:hover {
+.laptopFormWrapper .laptopBrandWrapper .laptopSelector .laptopOptions span:hover {
   background-color: #E7F0F8;
 }
 .laptopFormWrapper .defaultHr {
