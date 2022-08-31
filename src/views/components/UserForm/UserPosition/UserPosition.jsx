@@ -11,8 +11,8 @@ export const UserPosition = ({ revalidate, errs, show, setErrs, emitData }) => {
     const [displayPos, setDisplayPos] = useState(false);
     const [posAccessible, setPosAccessible] = useState(accessible ? accessible : false);
   
-    const [selectedTeam, setSelectedTeam] = useState(data?.team ? data.team : {});
-    const [selectedPos, setSelectedPos] = useState(data?.position ? data.position : {});
+    const [selectedTeam, setSelectedTeam] = useState(data?.team_id ? data.team_id : {});
+    const [selectedPos, setSelectedPos] = useState(data?.position_id ? data.position_id : {});
   
     const [teamData, setTeamData] = useState([]);
     const [optionsData, setOptionsData] = useState([]);
@@ -39,11 +39,11 @@ export const UserPosition = ({ revalidate, errs, show, setErrs, emitData }) => {
 
       setSelectedPos({});
       
-      if(data && data.position) {
-        data.position.name = null;
+      if(data && data.position_id) {
+        data.position_id.name = null;
       }
 
-      emitData((prev) => ({ ...prev, position: {} }));
+      emitData((prev) => ({ ...prev, position_id: {} }));
 
       sessionStorage.setItem("accessible", true);
 
@@ -53,7 +53,7 @@ export const UserPosition = ({ revalidate, errs, show, setErrs, emitData }) => {
       }));
 
 
-      emitData((prev) => ({ ...prev, team: e }));
+      emitData((prev) => ({ ...prev, team_id: e }));
 
       setErrs((prev) => ({
         ...prev,
@@ -71,7 +71,7 @@ export const UserPosition = ({ revalidate, errs, show, setErrs, emitData }) => {
       }));
 
 
-      emitData((prev) => ({ ...prev, position: e }));
+      emitData((prev) => ({ ...prev, position_id: e }));
     }
   
     const setPositions = (data) => {
@@ -81,7 +81,7 @@ export const UserPosition = ({ revalidate, errs, show, setErrs, emitData }) => {
   
     useEffect(() => {
       const getPositions = async () => {
-        if(selectedTeam.id || data?.position) {
+        if(selectedTeam.id || data?.position_id) {
           const response = await axios.get("https://pcfy.redberryinternship.ge/api/positions");
           const data = await response.data;
           setPositions(data.data);
@@ -93,12 +93,12 @@ export const UserPosition = ({ revalidate, errs, show, setErrs, emitData }) => {
 
     useEffect(() => {
       if(revalidate && data) {
-        emitData((prev) => ({ ...prev, position: data?.team }));
+        emitData((prev) => ({ ...prev, position_id: data?.team_id }));
         setErrs((prev) => ({
           ...prev,
           team: true
         }));
-        emitData((prev) => ({ ...prev, position: data?.position }));
+        emitData((prev) => ({ ...prev, position_id: data?.position_id }));
         setErrs((prev) => ({
           ...prev,
           position: true
@@ -109,12 +109,12 @@ export const UserPosition = ({ revalidate, errs, show, setErrs, emitData }) => {
     
     const posArr = Object.values(selectedPos).length;
 
-    const teamClass = `teamSelector${!data?.team && show && (errs.team === null || errs.team) ? " invalid" : ""}`;
+    const teamClass = `teamSelector${!data?.team_id && show && (errs.team === null || errs.team) ? " invalid" : ""}`;
     const posClass = `posSelector${(!posArr || posArr === 0) && show && (errs.position === null || errs.position) ? " invalid" : ""}${!posAccessible ? " disabled" : ""}`
 
     return (
         <>
-            <div ref={teamRef} onClick={() => setDisplayTeam(!displayTeam)} className={teamClass}><span>{selectedTeam.name ? selectedTeam.name : data?.team ? data.team?.name : "თიმი"}</span><Arrow className={displayTeam ? "displayed" : null} />
+            <div ref={teamRef} onClick={() => setDisplayTeam(!displayTeam)} className={teamClass}><span>{selectedTeam.name ? selectedTeam.name : data?.team_id ? data.team_id?.name : "თიმი"}</span><Arrow className={displayTeam ? "displayed" : null} />
                 {displayTeam && 
                     <div className="teamOptions">
                     {teamData.map((e, i) => {
@@ -122,7 +122,7 @@ export const UserPosition = ({ revalidate, errs, show, setErrs, emitData }) => {
                     })}
                     </div>}
             </div>
-            <div ref={posRef} onClick={() => setDisplayPos(!displayPos)} className={posClass}><span>{selectedPos.name ? selectedPos.name : data?.position?.name ? data.position.name : "პოზიცია"}</span><Arrow className={displayTeam ? "displayed" : null} />
+            <div ref={posRef} onClick={() => setDisplayPos(!displayPos)} className={posClass}><span>{selectedPos.name ? selectedPos.name : data?.position_id?.name ? data.position_id.name : "პოზიცია"}</span><Arrow className={displayTeam ? "displayed" : null} />
                 {displayPos && 
                 <div className="posOptions">
                     {optionsData.map((e, i) => {

@@ -6,14 +6,15 @@ export const LaptopImg = ({ err, emitImage, show, emitData }) => {
 
     const data = JSON.parse(sessionStorage.getItem("laptopData"));
 
-    const [base64, setBase64] = useState(data?.image ? data.image : "");
+    const [imgUrl, setImgUrl] = useState(data?.laptop_image ? data.laptop_image : "");
+    const [base64, setBase64] = useState(data?.binary ? data.binary : "");
     const [showImage, setShowImage] = useState(false);
 
     const fileRef = useRef(null);
     const imgRef = useRef(null);
   
     useEffect(() => {
-      if(data?.image) {
+      if(data?.laptop_image) {
         setShowImage(true);
       }
     }, [data]);
@@ -26,7 +27,13 @@ export const LaptopImg = ({ err, emitImage, show, emitData }) => {
   
     const handleImgChange = async (e) => {
       e.preventDefault();
+      const file = fileRef.current.files[0];
+      const path = file.name;
+      const type = file.type;
       
+      const str = `${path};type=${type}`
+      setImgUrl(str);
+
       if(fileRef.current.files[0]) {
         const base64 = await toBase64(fileRef.current.files[0]);
         setBase64(base64);
@@ -57,14 +64,15 @@ export const LaptopImg = ({ err, emitImage, show, emitData }) => {
     }
   
     useEffect(() => {
-      if(base64 !== "") {
+      if(imgUrl !== "" && base64 !== "") {
         emitData((prev) => ({
           ...prev,
-          image: base64
+          laptop_image: imgUrl,
+          binary: base64
         }));
       }
     }, [base64]);
-  
+
     const imgStyle = showImage ? {"display": "block"} : {"display": "none"};
 
     return (

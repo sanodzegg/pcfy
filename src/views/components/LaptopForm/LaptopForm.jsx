@@ -7,7 +7,7 @@ import { LaptopImg } from "./LaptopImg/LaptopImg";
 import { AboutLaptop } from "./AboutLaptop/AboutLaptop";
 import { Navigation } from "./Navigation/Navigation";
 
-export const LaptopForm = ({ setPage }) => {
+export const LaptopForm = ({ setPage, postData }) => {
 
   const [laptopID, setLeptoptID] = useState(null);
 
@@ -15,17 +15,23 @@ export const LaptopForm = ({ setPage }) => {
   const [accessErrors, setAccessErrors] = useState(false);
   const [checker, setChecker] = useState(false);
 
+  useEffect(() => {
+    // console.log(image);
+  }, [image])
+
   const [localData, setLocalData] = useState({
-    name: "",
-    image: "",
-    brand: null,
-    cpu: null,
+    binary: "",
+    laptop_name: "",
+    laptop_image: "",
+    laptop_brand_id: null,
+    laptop_cpu: null,
     laptop_cpu_cores: null,
     laptop_cpu_threads: null,
     laptop_ram: null,
-    hard_drive_type: "",
+    laptop_hard_drive_type: "",
     laptop_state: "",
     laptop_purchase_date: "",
+    purchase_date_local: "",
     laptop_price: null
   });
 
@@ -41,6 +47,14 @@ export const LaptopForm = ({ setPage }) => {
     ram: false,
     memory: false
   });
+
+  const [laptopAboutErrors, setLaptopAboutErrors] = useState({
+    date: true,
+    price: false,
+    state: false
+  });
+
+  const allErrors = [image, laptopBrandErrors, laptopAboutErrors, laptopSysErrors];
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -68,8 +82,8 @@ export const LaptopForm = ({ setPage }) => {
         <hr className="defaultHr" />
         <SystemForm laptopSet={setLeptoptID} errors={laptopSysErrors} show={accessErrors} ID={laptopID} emitData={setLocalData} emitErrors={setLaptopSysErrors} revalidate={checker} />
         <hr className="defaultHr" />
-        <AboutLaptop />
-        <Navigation setPage={setPage} setErrors={setAccessErrors} updateChecker={setChecker} />
+        <AboutLaptop emitErrors={setLaptopAboutErrors} errors={laptopAboutErrors} show={accessErrors} emitData={setLocalData} revalidate={checker} />
+        <Navigation setPage={setPage} setErrors={setAccessErrors} updateChecker={setChecker} errors={allErrors} />
       </form>
     </div>
   );

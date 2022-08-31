@@ -7,17 +7,17 @@ export const LaptopBrand = ({ errors, show, emitData, emitErrors, setLeptopID, r
 
   const data = JSON.parse(sessionStorage.getItem("laptopData"));
 
-  const [laptopName, setLaptopName] = useState(data?.name ? data.name : "");
+  const [laptopName, setLaptopName] = useState(data?.laptop_name ? data.laptop_name : "");
   const [displayBrands, setDisplayBrands] = useState(false);
   const [laptopBrands, setLaptopBrands] = useState([]);
 
-  const [chosenBrand, setChosenBrand] = useState(data?.brand ? data.brand : {});
+  const [chosenBrand, setChosenBrand] = useState(data?.laptop_brand_id ? data.laptop_brand_id : {});
 
   const handleNameInput = () => {
     const regex = /^[a-zA-Z0-9!@#$%*&=()\\-`.+,/\"]*$/i;
     emitData((prev) => ({
       ...prev,
-      name: laptopName
+      laptop_name: laptopName
     }));
     if(regex.test(laptopName) && laptopName.length > 0) {
       emitErrors((prev) => ({
@@ -49,7 +49,7 @@ export const LaptopBrand = ({ errors, show, emitData, emitErrors, setLeptopID, r
 
     emitData((prev) => ({
       ...prev,
-      brand: e
+      laptop_brand_id: e
     }));
     emitErrors((prev) => ({
       ...prev,
@@ -58,7 +58,7 @@ export const LaptopBrand = ({ errors, show, emitData, emitErrors, setLeptopID, r
 
     emitData((prev) => ({
       ...prev,
-      cpu: null
+      laptop_cpu: null
     }));
     sessionStorage.setItem("cpuReset", true);
   }
@@ -67,25 +67,32 @@ export const LaptopBrand = ({ errors, show, emitData, emitErrors, setLeptopID, r
     if(revalidate && data) {
       handleNameInput();
 
-      emitData((prev) => ({
-        ...prev,
-        brand: data.brand
-      }));
-      emitErrors((prev) => ({
-        ...prev,
-        brand: true
-      }));
+      if(data?.laptop_brand_id) {
+        emitData((prev) => ({
+          ...prev,
+          laptop_brand_id: data.laptop_brand_id
+        }));
+        emitErrors((prev) => ({
+          ...prev,
+          brand: true
+        }));
+      }
     }
   }, [revalidate]);
 
+  const classes = {
+    nameInput: `nameInput${!data?.laptop_name && !errors.name && show ? " invalid" : ""}`,
+    brandInput: `brandInput${!data?.laptop_brand_id && !errors.brand && show ? " invalid" : ""}`
+  }
+
   return (
     <div className="laptopBrandWrapper">
-        <div className={`nameInput${!errors.name && show ? " invalid" : ""}`}>
+        <div className={classes.nameInput}>
             <label htmlFor="laptopName">ლეპტოპის სახელი</label>
             <input onChange={(e) => setLaptopName(e.target.value)} onBlur={handleNameInput} type="text" name="laptopName" placeholder="HP" value={laptopName ? laptopName : ""} />
             <span>ლათინური ასოები, ციფრები, !@#$%^&*()_+=</span>
         </div>
-        <div className={`brandInput${!errors.brand && show ? " invalid" : ""}`}>
+        <div className={classes.brandInput}>
             <div onClick={() => setDisplayBrands(!displayBrands)} className={`laptopSelector${displayBrands ? " displaying" : ""}`}><span>{chosenBrand.name ? chosenBrand.name : "ლეპტოპის ბრენდი"}</span><Arrow className={displayBrands ? "displayed" : null} />
             {displayBrands && 
                 <div className="laptopOptions">

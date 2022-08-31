@@ -11,6 +11,12 @@
 .aboutLaptopWrapper .aboutLaptop-col .dateInput, .aboutLaptopWrapper .aboutLaptop-col .priceInput {
   width: 100%;
 }
+.aboutLaptopWrapper .aboutLaptop-col .dateInput.invalid input, .aboutLaptopWrapper .aboutLaptop-col .priceInput.invalid input {
+  border: 2px solid red;
+}
+.aboutLaptopWrapper .aboutLaptop-col .dateInput.invalid label, .aboutLaptopWrapper .aboutLaptop-col .dateInput.invalid span, .aboutLaptopWrapper .aboutLaptop-col .priceInput.invalid label, .aboutLaptopWrapper .aboutLaptop-col .priceInput.invalid span {
+  color: red;
+}
 .aboutLaptopWrapper .aboutLaptop-col .dateInput label, .aboutLaptopWrapper .aboutLaptop-col .priceInput label {
   display: block;
   font-size: 18px;
@@ -54,6 +60,20 @@
 .aboutLaptopWrapper .radioWrapper {
   width: 100%;
 }
+.aboutLaptopWrapper .radioWrapper.invalid p {
+  color: red;
+}
+.aboutLaptopWrapper .radioWrapper .radioLabelWrapper.flex {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.aboutLaptopWrapper .radioWrapper .radioLabelWrapper .error {
+  margin-left: 15px;
+  width: 22px;
+  height: 20px;
+  align-self: flex-start;
+}
 .aboutLaptopWrapper .radioWrapper p {
   display: block;
   font-size: 18px;
@@ -61,29 +81,29 @@
   font-weight: 500;
   margin-bottom: 25px;
 }
-.aboutLaptopWrapper .radioWrapper p .radios {
+.aboutLaptopWrapper .radioWrapper .radios {
   display: flex;
   justify-content: flex-start;
   -moz-column-gap: 30px;
        column-gap: 30px;
 }
-.aboutLaptopWrapper .radioWrapper p .radios .customRadio {
+.aboutLaptopWrapper .radioWrapper .radios .customRadio {
   display: flex;
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
 }
-.aboutLaptopWrapper .radioWrapper p .radios .customRadio span {
+.aboutLaptopWrapper .radioWrapper .radios .customRadio span {
   margin-left: 10px;
 }
-.aboutLaptopWrapper .radioWrapper p .radios .customRadio .customRadioWrapper {
+.aboutLaptopWrapper .radioWrapper .radios .customRadio .customRadioWrapper {
   width: 20px;
   height: 20px;
   border: 2px solid #4D9AC3;
   border-radius: 50%;
   position: relative;
 }
-.aboutLaptopWrapper .radioWrapper p .radios .customRadio .customRadioWrapper .radioInside {
+.aboutLaptopWrapper .radioWrapper .radios .customRadio .customRadioWrapper .radioInside {
   width: 13px;
   height: 13px;
   position: absolute;

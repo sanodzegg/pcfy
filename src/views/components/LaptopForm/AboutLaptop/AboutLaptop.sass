@@ -9,6 +9,11 @@
         column-gap: 65px
         .dateInput, .priceInput
             width: 100%
+            &.invalid
+                input
+                    border: 2px solid red
+                label, span
+                    color: red
             label
                 display: block
                 font-size: 18px
@@ -29,38 +34,51 @@
                 font-weight: 400
     .radioWrapper
         width: 100%
+        &.invalid
+            p
+                color: red
+        .radioLabelWrapper
+            &.flex
+                display: flex
+                justify-content: flex-start
+                align-items: center
+            .error
+                margin-left: 15px
+                width: 22px
+                height: 20px
+                align-self: flex-start
         p
             display: block
             font-size: 18px
             line-height: 21px
             font-weight: 500
             margin-bottom: 25px
-            .radios
+        .radios
+            display: flex
+            justify-content: flex-start
+            column-gap: 30px
+            .customRadio
                 display: flex
-                justify-content: flex-start
-                column-gap: 30px
-                .customRadio
-                    display: flex
-                    align-items: center
-                    justify-content: space-between
-                    cursor: pointer
-                    span
-                        margin-left: 10px
-                    .customRadioWrapper
-                        width: 20px
-                        height: 20px
-                        border: 2px solid #4D9AC3
+                align-items: center
+                justify-content: space-between
+                cursor: pointer
+                span
+                    margin-left: 10px
+                .customRadioWrapper
+                    width: 20px
+                    height: 20px
+                    border: 2px solid #4D9AC3
+                    border-radius: 50%
+                    position: relative
+                    .radioInside
+                        width: 13px
+                        height: 13px
+                        position: absolute
+                        top: 50%
+                        left: 50%
+                        transform: translate(-50%, -50%)
+                        background-color: #4D9AC3
                         border-radius: 50%
-                        position: relative
-                        .radioInside
-                            width: 13px
-                            height: 13px
-                            position: absolute
-                            top: 50%
-                            left: 50%
-                            transform: translate(-50%, -50%)
-                            background-color: #4D9AC3
-                            border-radius: 50%
-                            display: none
+                        display: none
     .aboutLaptop-col:nth-child(2)
         margin-top: 50px

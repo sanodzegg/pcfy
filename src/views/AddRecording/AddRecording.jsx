@@ -8,9 +8,6 @@ import { UserForm } from "views/components/UserForm/UserForm";
 import { LaptopForm } from "views/components/LaptopForm/LaptopForm";
 
 export const AddRecording = () => {
-
-    const [userRecording, setUserRecording] = useState(null);
-
     const navigate = useNavigate();
 
     const [displayForm, setDisplayForm] = useState(null);
@@ -22,21 +19,20 @@ export const AddRecording = () => {
         } else setDisplayForm(0);
     }, []);
 
-    useEffect(() => {
-        if(userRecording) {
-            console.log(userRecording);
-        }
-    }, [userRecording]);
+    const goPrevious = () => {
+        setDisplayForm(0);
+        sessionStorage.setItem("formPage", 0);
+    }
 
     return (
         <div className="addRecordWrapper">
-            <Exit className="exitBtn" onClick={() => navigate("/")} />
+            <Exit className="exitBtn" onClick={() => { displayForm === 0 ? navigate(-1) : goPrevious(); }} />
             <div className="formWrapper">
                 <div className="formHeader">
                     <span>თანამშრომლის ინფო {displayForm === 0 && <hr />}</span>
                     <span>ლეპტოპის მახასიათებლები {displayForm === 1 && <hr className="laptopHr" />}</span>
                 </div>
-                {displayForm === 0 ? <UserForm emitRecording={setUserRecording} setPage={setDisplayForm} /> : <LaptopForm setPage={setDisplayForm} />}
+                {displayForm === 0 ? <UserForm setPage={setDisplayForm} /> : <LaptopForm setPage={setDisplayForm} />}
             </div>
         </div>
     );

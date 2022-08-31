@@ -11,7 +11,7 @@ import { UserBasic } from "./UserBasic/UserBasic";
 import { UserPosition } from "./UserPosition/UserPosition";
 import { UserContact } from "./UserContact/UserContact";
 
-export const UserForm = ({ setPage, emitRecording }) => {
+export const UserForm = ({ setPage }) => {
 
   const [checker, setChecker] = useState(false);
   const [showErrs, setShowErrs] = useState(false);
@@ -20,8 +20,8 @@ export const UserForm = ({ setPage, emitRecording }) => {
   const [localData, setLocalData] = useState({
     name: "",
     surname: "",
-    team: null,
-    position: null,
+    team_id: null,
+    position_id: null,
     phone_number: "",
     email: ""
   });
@@ -67,14 +67,12 @@ export const UserForm = ({ setPage, emitRecording }) => {
 
       const invalid = inner.some(e => e !== true);
 
-      const {team, position, ...recording} = localData;
+      const {team_id, position, ...recording} = localData;
 
-      if(localData.team && localData.position) {
-        recording.team = localData.team.id;
+      if(localData.team_id && localData.position) {
+        recording.team_id = localData.team_id.id;
         recording.position = localData.position.id;
       }
-
-      emitRecording(recording);
 
       if(invalid) {
         setCanSend(false);

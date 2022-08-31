@@ -12,7 +12,7 @@ export const UserContact = ({ revalidate, errs, show, setErrs, emitData }) => {
     const mailRgx = /^[a-z0-9](\.?[a-z0-9]){2,}@redberry\.ge$/i;
 
     emitData((prev) => ({ ...prev, email: mail }));
-    if(mailRgx.test(mail)) {
+    if(mailRgx.test(mail) && mail.length > 0) {
       setErrs((prev) => ({ ...prev, mail: true }));
     } else {
       setErrs((prev) => ({ ...prev, mail: false }));
@@ -55,8 +55,8 @@ export const UserContact = ({ revalidate, errs, show, setErrs, emitData }) => {
     }
   }, [revalidate]);
 
-  const mailClass = `mail${mail && errs.mail === null ? "" : mail && errs.mail === false && show ? " invalid" : ""}`;
-  const pnClass = `phoneNum${pn && errs.pn === null ? "" : pn && errs.pn === false && show ? " invalid" : ""}`;
+  const mailClass = `mail${mail && errs.mail === null ? "" : errs.mail === false && show ? " invalid" : ""}`;
+  const pnClass = `phoneNum${pn && errs.pn === null ? "" : errs.pn === false && show ? " invalid" : ""}`;
 
   return (
     <>
