@@ -1,0 +1,46 @@
+.popupWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: #4A4B4B;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.popupWrapper .popup {
+  background-color: #FFF;
+  text-align: center;
+  border-radius: 10px;
+  max-width: 850px;
+}
+.popupWrapper .popup .popupInner p {
+  margin: 0 0 80px 0;
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 31px;
+  padding: 0 265px;
+}
+.popupWrapper .popup .popupInner button {
+  background-color: #62A1EB;
+  font-size: 20px;
+  line-height: 24.42px;
+  padding: 15px 60px;
+  text-align: center;
+  border: unset;
+  outline: unset;
+  color: #fff;
+  border-radius: 10px;
+  max-width: 385px;
+  cursor: pointer;
+  font-size: 20px !important;
+}
+.popupWrapper .popup .popupInner span {
+  display: block;
+  margin: 30px 0;
+  font-size: 20px;
+  line-height: 25px;
+  color: #0089A7;
+  cursor: pointer;
+}/*# sourceMappingURL=SuccessPopup.css.map */

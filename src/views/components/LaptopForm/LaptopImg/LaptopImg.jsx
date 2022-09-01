@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { ReactComponent as ErrorMark } from "assets/svg/error.svg";
 
-export const LaptopImg = ({ err, emitImage, show, emitData }) => {
+export const LaptopImg = ({ err, emitImage, show, emitData, emitIMGObj }) => {
 
     const data = JSON.parse(sessionStorage.getItem("laptopData"));
 
@@ -28,11 +28,9 @@ export const LaptopImg = ({ err, emitImage, show, emitData }) => {
     const handleImgChange = async (e) => {
       e.preventDefault();
       const file = fileRef.current.files[0];
-      const path = file.name;
-      const type = file.type;
       
-      const str = `${path};type=${type}`
-      setImgUrl(str);
+      emitIMGObj(file);
+      setImgUrl(file);
 
       if(fileRef.current.files[0]) {
         const base64 = await toBase64(fileRef.current.files[0]);
@@ -41,6 +39,22 @@ export const LaptopImg = ({ err, emitImage, show, emitData }) => {
       }
 
       emitImage(true);
+    }
+
+    const getFileFromBase = (string64, fileName) => {
+      const trimmed = string64.replace("data:image/jpeg;base64,", "");
+      const imgContent = atob(trimmed);
+      const buffer = new ArrayBuffer(imgContent.length);
+      const view = new Uint8Array(buffer);
+
+      console.log(view)
+
+      for (let n = 0; n < imgContent.length; n++) {
+        view[n] = imgContent.charCodeAt(n);
+      }
+      const type = 'image/jpeg';
+      const blob = new Blob([buffer], { type });
+      return new File([blob], fileName, { lastModified: new Date().getTime(), type });
     }
     
     const toBase64 = (file) => {
@@ -71,6 +85,7 @@ export const LaptopImg = ({ err, emitImage, show, emitData }) => {
           binary: base64
         }));
       }
+      console.log(getFileFromBase(base64, ""));
     }, [base64]);
 
     const imgStyle = showImage ? {"display": "block"} : {"display": "none"};

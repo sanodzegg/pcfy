@@ -7,11 +7,12 @@ import { LaptopImg } from "./LaptopImg/LaptopImg";
 import { AboutLaptop } from "./AboutLaptop/AboutLaptop";
 import { Navigation } from "./Navigation/Navigation";
 
-export const LaptopForm = ({ setPage, postData }) => {
+export const LaptopForm = ({ setPage, emitResponse }) => {
 
   const [laptopID, setLeptoptID] = useState(null);
 
   const [image, setImage] = useState(false);
+  const [imgObj, setIMGObj] = useState({});
   const [accessErrors, setAccessErrors] = useState(false);
   const [checker, setChecker] = useState(false);
 
@@ -77,13 +78,13 @@ export const LaptopForm = ({ setPage, postData }) => {
   return (
     <div className="laptopFormWrapper">
       <form>
-        <LaptopImg err={image} emitImage={setImage} show={accessErrors} emitData={setLocalData} />
+        <LaptopImg err={image} emitImage={setImage} show={accessErrors} emitData={setLocalData} emitIMGObj={setIMGObj} />
         <LaptopBrand errors={laptopBrandErrors} show={accessErrors} emitData={setLocalData} emitErrors={setLaptopBrandErrors} setLeptopID={setLeptoptID} revalidate={checker} />
         <hr className="defaultHr" />
         <SystemForm laptopSet={setLeptoptID} errors={laptopSysErrors} show={accessErrors} ID={laptopID} emitData={setLocalData} emitErrors={setLaptopSysErrors} revalidate={checker} />
         <hr className="defaultHr" />
         <AboutLaptop emitErrors={setLaptopAboutErrors} errors={laptopAboutErrors} show={accessErrors} emitData={setLocalData} revalidate={checker} />
-        <Navigation setPage={setPage} setErrors={setAccessErrors} updateChecker={setChecker} errors={allErrors} />
+        <Navigation setPage={setPage} setErrors={setAccessErrors} updateChecker={setChecker} errors={allErrors} imgObject={imgObj} emitResponse={emitResponse} />
       </form>
     </div>
   );

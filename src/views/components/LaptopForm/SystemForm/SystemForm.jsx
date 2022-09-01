@@ -4,7 +4,6 @@ import axios from "axios";
 import "./SystemForm.css"
 
 import { ReactComponent as Arrow } from "assets/svg/selectArrow.svg";
-
 import { ReactComponent as ErrorMark } from "assets/svg/error.svg";
 
 export const SystemForm = ({ laptopSet, errors, show, ID, emitData, emitErrors, revalidate }) => {
@@ -26,11 +25,6 @@ export const SystemForm = ({ laptopSet, errors, show, ID, emitData, emitErrors, 
 
   const rgx = /\d+/g;
   
-  const getCertainCPU = (data) => {
-    const options = data.filter(e => e.id === ID);
-    setCpuOptions(options);
-  }
-  
   useEffect(() => {
     if(sessionStorage.getItem("cpuReset") !== "false") {
       setSelectCPU({});
@@ -45,14 +39,18 @@ export const SystemForm = ({ laptopSet, errors, show, ID, emitData, emitErrors, 
   }, [data]);
 
   useEffect(() => {
+    setDisplayCPU(false);
     if(ID) {
       const getSelectedCPUData = async () => {
         const response = await axios.get("https://pcfy.redberryinternship.ge/api/cpus");
         const data = await response.data;
-        getCertainCPU(data.data);
+        setCpuOptions(data.data);
         setCpuAccessible(true);
       }
       getSelectedCPUData();
+    }
+    if(ID && ID !== selectCPU.id) {
+      setCpuAccessible(false);
     }
   }, [ID]);
 
@@ -73,7 +71,7 @@ export const SystemForm = ({ laptopSet, errors, show, ID, emitData, emitErrors, 
 
 
   const handleCPUSelect = (e) => {
-    if(data?.laptop_cpu && data?.laptop_cpu.name) {
+    if(!e && data?.laptop_cpu && data?.laptop_cpu.name) {
       setSelectCPU(data.laptop_cpu);
 
       emitData((prev) => ({ ...prev, laptop_cpu: data.laptop_cpu }));

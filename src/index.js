@@ -10,6 +10,7 @@ import {
 
 import { Landing } from './views/LandingView/Landing';
 import { AddRecording } from './views/AddRecording/AddRecording';
+import { AllLaptops } from 'views/AllLaptops/AllLaptops';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -18,6 +19,7 @@ root.render(
       <Routes>
         <Route path={"/"} element={<Landing />} />
         <Route path={"/addRecording"} element={<AddRecording />} />
+        <Route path={"/addRecording/success"} element={<AllLaptops />} />
       </Routes>
     </Router>
   </React.StrictMode>
