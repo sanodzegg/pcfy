@@ -11,6 +11,7 @@ import {
 import { Landing } from './views/LandingView/Landing';
 import { AddRecording } from './views/AddRecording/AddRecording';
 import { AllLaptops } from 'views/AllLaptops/AllLaptops';
+import { CertainLaptop } from 'views/Laptop/CertainLaptop';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -19,7 +20,8 @@ root.render(
       <Routes>
         <Route path={"/"} element={<Landing />} />
         <Route path={"/addRecording"} element={<AddRecording />} />
-        <Route path={"/addRecording/success"} element={<AllLaptops />} />
+        <Route path={"/recordings"} element={<AllLaptops />} />
+        <Route path={"/recording/:id"} element={<CertainLaptop />} />
       </Routes>
     </Router>
   </React.StrictMode>

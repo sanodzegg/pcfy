@@ -1,0 +1,42 @@
+.laptopWrapper {
+  padding: 15px;
+  background-color: #EAFAFF;
+  border: 1px solid #AED1EA;
+  border-radius: 20px;
+  max-width: 565px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  -moz-column-gap: 30px;
+       column-gap: 30px;
+}
+.laptopWrapper .laptopImgWrapper {
+  width: 265px;
+  height: 180px;
+  border-radius: 10px;
+}
+.laptopWrapper .laptopImgWrapper img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.laptopWrapper .laptopInfoWrapper {
+  font-size: 18px;
+  line-height: 21px;
+  font-weight: 400;
+}
+.laptopWrapper .laptopInfoWrapper .userName {
+  font-weight: 500;
+}
+.laptopWrapper .laptopInfoWrapper .laptop {
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+.laptopWrapper .laptopInfoWrapper .seeMore {
+  font-size: 16px;
+  color: #4386a9;
+  text-decoration: underline;
+  cursor: pointer;
+}/*# sourceMappingURL=Laptop.css.map */

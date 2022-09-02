@@ -8,6 +8,9 @@ import { UserForm } from "views/components/UserForm/UserForm";
 import { LaptopForm } from "views/components/LaptopForm/LaptopForm";
 
 export const AddRecording = () => {
+
+    const data = { user: sessionStorage.getItem("userData"), laptop: sessionStorage.getItem("laptopData") };
+
     const navigate = useNavigate();
 
     const [displayForm, setDisplayForm] = useState(0);
@@ -27,20 +30,33 @@ export const AddRecording = () => {
 
     useEffect(() => {
         if(formResponse) {
-            sessionStorage.removeItem("userData");
-            sessionStorage.removeItem("laptopData");
+            sessionStorage.clear();
 
             navigate("success");
         }
     }, [formResponse]);
+    
+    const handleUserNavigate = () => {
+        if(data.user) {
+            setDisplayForm(0);
+            sessionStorage.setItem("formPage", 0);
+        }    
+    }
+
+    const handleLaptopNavigate = () => {
+        if(data.laptop) {
+            setDisplayForm(1);
+            sessionStorage.setItem("formPage", 1);
+        }
+    }
 
     return (
         <div className="addRecordWrapper">
             <Exit className="exitBtn" onClick={() => { displayForm === 0 ? navigate(-1) : goPrevious(); }} />
             <div className="formWrapper">
                 <div className="formHeader">
-                    <span>თანამშრომლის ინფო {displayForm === 0 && <hr />}</span>
-                    <span>ლეპტოპის მახასიათებლები {displayForm === 1 && <hr className="laptopHr" />}</span>
+                    <span onClick={handleUserNavigate}>თანამშრომლის ინფო {displayForm === 0 && <hr />}</span>
+                    <span onClick={handleLaptopNavigate}>ლეპტოპის მახასიათებლები {displayForm === 1 && <hr className="laptopHr" />}</span>
                 </div>
                 {displayForm === 0 ? <UserForm setPage={setDisplayForm} /> : <LaptopForm setPage={setDisplayForm} emitResponse={setFormResponse} />}
             </div>

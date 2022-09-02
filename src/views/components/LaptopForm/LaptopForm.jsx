@@ -16,14 +16,10 @@ export const LaptopForm = ({ setPage, emitResponse }) => {
   const [accessErrors, setAccessErrors] = useState(false);
   const [checker, setChecker] = useState(false);
 
-  useEffect(() => {
-    // console.log(image);
-  }, [image])
-
   const [localData, setLocalData] = useState({
     binary: "",
     laptop_name: "",
-    laptop_image: "",
+    laptop_image_info: "",
     laptop_brand_id: null,
     laptop_cpu: null,
     laptop_cpu_cores: null,

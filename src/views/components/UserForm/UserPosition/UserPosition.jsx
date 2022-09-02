@@ -32,6 +32,7 @@ export const UserPosition = ({ revalidate, errs, show, setErrs, emitData }) => {
       window.scrollTo(0, 0);
     }, []);
 
+
     const handleTeamSelect = (e) => {
       setSelectedTeam(e);
       setDisplayTeam(false);
@@ -54,11 +55,6 @@ export const UserPosition = ({ revalidate, errs, show, setErrs, emitData }) => {
 
 
       emitData((prev) => ({ ...prev, team_id: e }));
-
-      setErrs((prev) => ({
-        ...prev,
-        position: false
-      }));
     }
   
     const handlePosSelect = (e) => {
@@ -92,12 +88,14 @@ export const UserPosition = ({ revalidate, errs, show, setErrs, emitData }) => {
     }, [selectedTeam]);
 
     useEffect(() => {
-      if(revalidate && data) {
-        emitData((prev) => ({ ...prev, position_id: data?.team_id }));
+      if(revalidate && Object.values(selectedTeam).length !== 0) {
+        emitData((prev) => ({ ...prev, team_id: data?.team_id }));
         setErrs((prev) => ({
           ...prev,
           team: true
         }));
+      } 
+      if (revalidate && Object.values(selectedPos).length !== 0) {
         emitData((prev) => ({ ...prev, position_id: data?.position_id }));
         setErrs((prev) => ({
           ...prev,
@@ -106,7 +104,6 @@ export const UserPosition = ({ revalidate, errs, show, setErrs, emitData }) => {
       }
     }, [revalidate]);
 
-    
     const posArr = Object.values(selectedPos).length;
 
     const teamClass = `teamSelector${!data?.team_id && show && (errs.team === null || errs.team) ? " invalid" : ""}`;

@@ -76,6 +76,7 @@ export const AboutLaptop = ({ emitErrors, errors, show, emitData, revalidate }) 
         radioUsed.current.style.display = "none";
 
         setLaptopState("new");
+        emitData((prev) => ({ ...prev, laptop_state: "new" }));
     }
 
     const handleUsed = () => {
@@ -83,6 +84,7 @@ export const AboutLaptop = ({ emitErrors, errors, show, emitData, revalidate }) 
         radioNew.current.style.display = "none";
 
         setLaptopState("used");
+        emitData((prev) => ({ ...prev, laptop_state: "used" }));
     }
 
     const classes = {
@@ -108,7 +110,7 @@ export const AboutLaptop = ({ emitErrors, errors, show, emitData, revalidate }) 
         <div className="aboutLaptop-col">
             <div className={classes.radioClass}>
                 <div className={classes.radioLabel}>
-                    <p>მეხსიერების ტიპი</p>
+                    <p>ლეპტოპის მდგომარეობა</p>
                     {(show && !errors.state) && <Errormark className="error" />}
                 </div>
                 <div className="radios">

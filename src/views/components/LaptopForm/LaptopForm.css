@@ -58,11 +58,50 @@
 .laptopFormWrapper form .imgUploadWrapper input[type=file],
 .laptopFormWrapper form .imgUploadWrapper input[type=image] {
   display: none;
-}
-.laptopFormWrapper form .imgUploadWrapper input[type=image] {
+  pointer-events: none;
   max-width: 110%;
   -o-object-fit: fill;
      object-fit: fill;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.laptopFormWrapper form .uploadInfoWrapper {
+  padding: 25px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.laptopFormWrapper form .uploadInfoWrapper button {
+  background-color: #62A1EB;
+  font-size: 20px;
+  line-height: 24.42px;
+  padding: 15px 60px;
+  text-align: center;
+  border: unset;
+  outline: unset;
+  color: #fff;
+  border-radius: 10px;
+  max-width: 385px;
+  cursor: pointer;
+  padding: 18px 25px;
+  font-size: 20px;
+  line-height: 25px;
+}
+.laptopFormWrapper form .uploadInfoWrapper .fileInfo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.laptopFormWrapper form .uploadInfoWrapper .fileInfo .imgName {
+  margin: 0 15px 0 25px;
+}
+.laptopFormWrapper form .uploadInfoWrapper .fileInfo .fileSize {
+  color: #5F5F5F;
+  font-size: 17px;
+  line-height: 20px;
 }
 .laptopFormWrapper .laptopBrandWrapper {
   margin-top: 50px;

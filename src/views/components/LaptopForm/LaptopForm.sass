@@ -42,9 +42,32 @@
             input[type="file"],
             input[type="image"]
                 display: none
-            input[type="image"]
+                pointer-events: none
                 max-width: 110%
                 object-fit: fill
+                user-select: none
+        .uploadInfoWrapper
+            padding: 25px 0
+            display: flex
+            align-items: center
+            justify-content: space-between
+            width: 100%
+            button
+                @include defaultBtn
+                padding: 18px 25px
+                font-size: 20px
+                line-height: 25px
+            .fileInfo
+                display: flex
+                align-items: center
+                justify-content: flex-start
+                .imgName
+                    margin: 0 15px 0 25px
+                .fileSize
+                    color: #5F5F5F
+                    font-size: 17px
+                    line-height: 20px
+
     .laptopBrandWrapper
         margin-top: 50px
         width: 100%

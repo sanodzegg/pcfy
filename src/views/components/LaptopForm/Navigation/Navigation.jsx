@@ -23,7 +23,17 @@ export const Navigation = ({ setPage, setErrors, updateChecker, errors, imgObjec
         updateChecker(true);
         setErrors(true);
 
-        const valid = errors.some(e => e === true);
+        const newErrors = [];
+
+        errors.forEach(e => {
+            if(typeof e === "object") {
+                Object.values(e).map(y => {
+                    newErrors.push(y)
+                })
+            } else newErrors.push(e);
+        });
+
+        const valid = newErrors.every(e => e === true);
 
         const formData = new FormData();
 
@@ -32,10 +42,10 @@ export const Navigation = ({ setPage, setErrors, updateChecker, errors, imgObjec
             newUserData.position_id = userData.position_id.id;
             newUserData.team_id = userData.team_id.id;
     
-            const {binary, purchase_date_local, ...newLaptopData} = laptopData;
+            const { binary, purchase_date_local, laptop_image_info, ...newLaptopData } = laptopData;
             newLaptopData.laptop_image = imgObject;
-            newLaptopData.laptop_brand_id = laptopData.laptop_brand_id.id;
-            newLaptopData.laptop_cpu = laptopData.laptop_cpu.name;
+            newLaptopData.laptop_brand_id = laptopData?.laptop_brand_id?.id;
+            newLaptopData.laptop_cpu = laptopData?.laptop_cpu?.name;
             newUserData.phone_number = userData.phone_number.split(" ").join("");
     
             const merged = { ...newUserData, ...newLaptopData };
@@ -45,7 +55,9 @@ export const Navigation = ({ setPage, setErrors, updateChecker, errors, imgObjec
                 formData.append(pair[0], pair[1]);
             });
 
-            const req = await axios.post("https://pcfy.redberryinternship.ge/api/laptop/create", formData);
+            const req = await axios.post("https://pcfy.redberryinternship.ge/api/laptop/create", formData, { headers: {
+                "content-type": "multipart/form-data"
+            } });
             const res = await req.status;
 
             emitResponse(res);

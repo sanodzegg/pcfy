@@ -11,7 +11,7 @@ import { UserBasic } from "./UserBasic/UserBasic";
 import { UserPosition } from "./UserPosition/UserPosition";
 import { UserContact } from "./UserContact/UserContact";
 
-export const UserForm = ({ setPage }) => {
+export const UserForm = ({ setPage, emitUserTrue }) => {
 
   const [checker, setChecker] = useState(false);
   const [showErrs, setShowErrs] = useState(false);

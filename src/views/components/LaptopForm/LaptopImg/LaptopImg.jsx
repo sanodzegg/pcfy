@@ -1,21 +1,26 @@
 import { useEffect, useRef, useState } from "react";
 
 import { ReactComponent as ErrorMark } from "assets/svg/error.svg";
+import { ReactComponent as CheckMark } from "assets/svg/checkmark.svg";
 
 export const LaptopImg = ({ err, emitImage, show, emitData, emitIMGObj }) => {
 
     const data = JSON.parse(sessionStorage.getItem("laptopData"));
 
-    const [imgUrl, setImgUrl] = useState(data?.laptop_image ? data.laptop_image : "");
+    const [imgFile, setImgFile] = useState(data?.laptop_image_info ? data.laptop_image_info : "");
     const [base64, setBase64] = useState(data?.binary ? data.binary : "");
     const [showImage, setShowImage] = useState(false);
+    
+    const [generatedFile, setGeneratedFile] = useState(null);
+    const [reupload, setReupload] = useState(false);
 
     const fileRef = useRef(null);
     const imgRef = useRef(null);
   
     useEffect(() => {
-      if(data?.laptop_image) {
+      if(data?.binary) {
         setShowImage(true);
+        setReupload(true);
       }
     }, [data]);
 
@@ -30,7 +35,8 @@ export const LaptopImg = ({ err, emitImage, show, emitData, emitIMGObj }) => {
       const file = fileRef.current.files[0];
       
       emitIMGObj(file);
-      setImgUrl(file);
+
+      setImgFile({ name: file.name, type: file.type, size: file.size });
 
       if(fileRef.current.files[0]) {
         const base64 = await toBase64(fileRef.current.files[0]);
@@ -41,20 +47,31 @@ export const LaptopImg = ({ err, emitImage, show, emitData, emitIMGObj }) => {
       emitImage(true);
     }
 
-    const getFileFromBase = (string64, fileName) => {
-      const trimmed = string64.replace("data:image/jpeg;base64,", "");
-      const imgContent = atob(trimmed);
-      const buffer = new ArrayBuffer(imgContent.length);
-      const view = new Uint8Array(buffer);
+    const getFileFromBase = (string64, fileName, fileType) => {
+      const trimmed = fileType === "image/jpeg" ? string64.replace("data:image/jpeg;base64,", "") :
+      fileType === "image/png" ? string64.replace("data:image/png;base64,", "") : null;
 
-      console.log(view)
-
-      for (let n = 0; n < imgContent.length; n++) {
-        view[n] = imgContent.charCodeAt(n);
+      try {
+        if(trimmed) {
+          const imgContent = atob(trimmed);
+          const buffer = new ArrayBuffer(imgContent.length);
+          const view = new Uint8Array(buffer);
+    
+    
+          for (let n = 0; n < imgContent.length; n++) {
+            view[n] = imgContent.charCodeAt(n);
+          }
+          const type = fileType;
+          const blob = new Blob([buffer], { type });
+          return new File([blob], fileName, { lastModified: new Date().getTime(), type });
+        } else {
+          throw new Error("Unsupported Image Type");
+        }
+      } catch(err) {
+        if(err) {
+          emitImage(false);
+        }
       }
-      const type = 'image/jpeg';
-      const blob = new Blob([buffer], { type });
-      return new File([blob], fileName, { lastModified: new Date().getTime(), type });
     }
     
     const toBase64 = (file) => {
@@ -71,26 +88,35 @@ export const LaptopImg = ({ err, emitImage, show, emitData, emitIMGObj }) => {
       });
     }
 
-    const handleImgClick = (e) => {
+    const handleReupload = (e) => {
       e.preventDefault();
 
       fileRef.current.click();
     }
-  
+
     useEffect(() => {
-      if(imgUrl !== "" && base64 !== "") {
+      if(imgFile !== "" && base64 !== "") {
         emitData((prev) => ({
           ...prev,
-          laptop_image: imgUrl,
-          binary: base64
+          binary: base64,
+          laptop_image_info: imgFile
         }));
+        emitImage(true);
       }
-      console.log(getFileFromBase(base64, ""));
+      setGeneratedFile(getFileFromBase(base64, imgFile.name, imgFile.type));
     }, [base64]);
 
+    useEffect(() => {
+      if(generatedFile) {
+        emitIMGObj(generatedFile);
+      }
+    }, [generatedFile]);
+
     const imgStyle = showImage ? {"display": "block"} : {"display": "none"};
+    const imgName = imgFile?.name?.length < 30 ? `${imgFile?.name},` : `${imgFile?.name?.slice(0, 30)}...`
 
     return (
+      <>
         <div className={`imgUploadWrapper${!err && show ? " invalid" : ""}`}>
             <ErrorMark className={`error${!err && show ? "" : " hidden"}`} />
             {!showImage &&
@@ -100,7 +126,18 @@ export const LaptopImg = ({ err, emitImage, show, emitData, emitIMGObj }) => {
             </>
             }
             <input type="file" onChange={(e) => handleImgChange(e)} ref={fileRef} />
-            <input type="image" onClick={(e) => handleImgClick(e)} style={imgStyle} src={base64 ? base64 : ""} ref={imgRef} />
+            <input type="image" onClick={(e) => e.preventDefault()} style={imgStyle} src={base64 ? base64 : ""} ref={imgRef} />
         </div>
+        {reupload &&
+          <div className="uploadInfoWrapper">
+            <div className="fileInfo">
+              <CheckMark />
+              <span className="imgName">{imgName}</span>
+              <span className="fileSize">{`${(imgFile.size / (1024*1024)).toFixed(2)} mb`}</span>
+            </div>
+            <button onClick={(e) => handleReupload(e)}>თავიდან ატვირთე</button>
+          </div>
+        }
+      </>
     );
 };

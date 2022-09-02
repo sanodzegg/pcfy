@@ -89,11 +89,15 @@ export const SystemForm = ({ laptopSet, errors, show, ID, emitData, emitErrors, 
   }
 
   const handleCoresBlur = () => {
-    emitData((prev) => ({ ...prev, laptop_cpu_cores: parseInt(cores) }));
-    if(rgx.test(cores) && cores.toString().length > 0) {
-      emitErrors((prev) => ({ ...prev, cores: true }));
-    } else {
-      emitErrors((prev) => ({ ...prev, cores: false }));
+    if(cores) {
+      const coresStr = cores.toString();
+      
+      emitData((prev) => ({ ...prev, laptop_cpu_cores: parseInt(cores) }));
+      if(coresStr.match(rgx) && coresStr.length > 0) {
+        emitErrors((prev) => ({ ...prev, cores: true }));
+      } else {
+        emitErrors((prev) => ({ ...prev, cores: false }));
+      }
     }
   }
 

@@ -1,0 +1,26 @@
+.laptopSysWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.laptopSysWrapper .col {
+  display: flex;
+  align-items: flex-start;
+  -moz-column-gap: 80px;
+       column-gap: 80px;
+}
+.laptopSysWrapper .col .innerCol p {
+  font-size: 22px;
+  line-height: 27px;
+  color: #2E2E2E;
+  margin: 25px 0;
+  font-weight: 500;
+}
+.laptopSysWrapper .col .innerCol:nth-child(2) p {
+  color: #797979;
+  font-weight: 400;
+}
+.laptopSysWrapper .col:nth-child(2) {
+  margin-right: 150px;
+}/*# sourceMappingURL=LaptopSys.css.map */
