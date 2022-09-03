@@ -1,11 +1,13 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import { ReactComponent as ErrorMark } from "assets/svg/error.svg";
 import { ReactComponent as CheckMark } from "assets/svg/checkmark.svg";
+import { ReactComponent as PhoneImg } from "assets/svg/phoneImgUpload.svg";
 
 export const LaptopImg = ({ err, emitImage, show, emitData, emitIMGObj }) => {
 
     const data = JSON.parse(sessionStorage.getItem("laptopData"));
+    const [phoneWidth, setPhoneWidth] = useState(false);
 
     const [imgFile, setImgFile] = useState(data?.laptop_image_info ? data.laptop_image_info : "");
     const [base64, setBase64] = useState(data?.binary ? data.binary : "");
@@ -16,7 +18,7 @@ export const LaptopImg = ({ err, emitImage, show, emitData, emitIMGObj }) => {
 
     const fileRef = useRef(null);
     const imgRef = useRef(null);
-  
+
     useEffect(() => {
       if(data?.binary) {
         setShowImage(true);
@@ -24,22 +26,38 @@ export const LaptopImg = ({ err, emitImage, show, emitData, emitIMGObj }) => {
       }
     }, [data]);
 
+    const handleResize = () => {
+      window.innerWidth < 445 ? setPhoneWidth(true) : setPhoneWidth(false);
+    }
+
+    const handleDrop = (e) => {
+      e.preventDefault();
+
+      const dt = e.dataTransfer;
+      if(dt) {
+        const files = dt.files;
+        handleImgChange(files[0]);
+      }
+    }
+
+    useEffect(() => {
+      handleResize();
+    }, []);
+
     const handleImgUpload = (e) => {
       e.preventDefault();
 
       fileRef.current.click();
     }
-  
-    const handleImgChange = async (e) => {
-      e.preventDefault();
-      const file = fileRef.current.files[0];
+    const handleImgChange = async (fileArg) => {
+      const file = fileArg;
       
       emitIMGObj(file);
 
       setImgFile({ name: file.name, type: file.type, size: file.size });
 
-      if(fileRef.current.files[0]) {
-        const base64 = await toBase64(fileRef.current.files[0]);
+      if(file) {
+        const base64 = await toBase64(file);
         setBase64(base64);
         setShowImage(true);
       }
@@ -112,28 +130,49 @@ export const LaptopImg = ({ err, emitImage, show, emitData, emitIMGObj }) => {
       }
     }, [generatedFile]);
 
+    const PhoneFileInfo = () => {
+      return (
+        <div className="fileInfoWrapper">
+          <span className="imgName">{`${imgName.slice(0, 10)}...`}</span>
+          <span className="fileSize">{`${(imgFile.size / (1024*1024)).toFixed(2)} mb`}</span>
+        </div>
+      )
+    }
+
+    const DefaultFileInfo = () => {
+      return (
+        <>
+          <span className="imgName">{imgName}</span>
+          <span className="fileSize">{`${(imgFile.size / (1024*1024)).toFixed(2)} mb`}</span>
+        </>
+      )
+    }
+
+    window.addEventListener("resize", handleResize);
+
     const imgStyle = showImage ? {"display": "block"} : {"display": "none"};
-    const imgName = imgFile?.name?.length < 30 ? `${imgFile?.name},` : `${imgFile?.name?.slice(0, 30)}...`
+    const imgName = imgFile?.name?.length < 15 ? `${imgFile?.name},` : `${imgFile?.name?.slice(0, 15)}...`
+    const imgUploadClass = `imgUploadWrapper${!err && show ? " invalid" : phoneWidth ? " pnUpload" : ""}`;
 
     return (
       <>
-        <div className={`imgUploadWrapper${!err && show ? " invalid" : ""}`}>
+        <div onDrop={(e) => handleDrop(e)} onDragOver={(e) => e.preventDefault()} className={imgUploadClass} onClick={() => phoneWidth && fileRef.current.click()}>
             <ErrorMark className={`error${!err && show ? "" : " hidden"}`} />
             {!showImage &&
             <>
+            {phoneWidth && <PhoneImg />}
             <span>ჩააგდე ან ატვირთე ლეპტოპის ფოტო</span>
             <button onClick={(e) => handleImgUpload(e)}>ატვირთე</button>
             </>
             }
-            <input type="file" onChange={(e) => handleImgChange(e)} ref={fileRef} />
+            <input accept="image/*" type="file" onChange={(e) => handleImgChange(fileRef.current.files[0])} ref={fileRef} />
             <input type="image" onClick={(e) => e.preventDefault()} style={imgStyle} src={base64 ? base64 : ""} ref={imgRef} />
         </div>
         {reupload &&
           <div className="uploadInfoWrapper">
             <div className="fileInfo">
               <CheckMark />
-              <span className="imgName">{imgName}</span>
-              <span className="fileSize">{`${(imgFile.size / (1024*1024)).toFixed(2)} mb`}</span>
+              {phoneWidth ? <PhoneFileInfo /> : <DefaultFileInfo />}
             </div>
             <button onClick={(e) => handleReupload(e)}>თავიდან ატვირთე</button>
           </div>

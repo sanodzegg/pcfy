@@ -19,7 +19,7 @@ export const LaptopBrand = ({ errors, show, emitData, emitErrors, setLeptopID, r
       ...prev,
       laptop_name: laptopName
     }));
-    if(regex.test(laptopName) && laptopName.length > 0) {
+    if(regex.test(laptopName) && laptopName.length >= 2) {
       emitErrors((prev) => ({
         ...prev,
         name: true
@@ -55,12 +55,6 @@ export const LaptopBrand = ({ errors, show, emitData, emitErrors, setLeptopID, r
       ...prev,
       brand: true
     }));
-
-    emitData((prev) => ({
-      ...prev,
-      laptop_cpu: null
-    }));
-    sessionStorage.setItem("cpuReset", true);
   }
 
   useEffect(() => {
@@ -81,7 +75,7 @@ export const LaptopBrand = ({ errors, show, emitData, emitErrors, setLeptopID, r
   }, [revalidate]);
 
   const classes = {
-    nameInput: `nameInput${!data?.laptop_name && !errors.name && show ? " invalid" : ""}`,
+    nameInput: `nameInput${(!data?.laptop_name && !errors.name) && show ? " invalid" : ""}`,
     brandInput: `brandInput${!data?.laptop_brand_id && !errors.brand && show ? " invalid" : ""}`
   }
 

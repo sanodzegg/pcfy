@@ -1,5 +1,6 @@
 import "./AddRecording.css";
 import { ReactComponent as Exit } from "assets/svg/exit.svg";
+import { ReactComponent as PhoneExit } from "assets/svg/phoneExit.svg";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
@@ -15,13 +16,24 @@ export const AddRecording = () => {
 
     const [displayForm, setDisplayForm] = useState(0);
     const [formResponse, setFormResponse] = useState(null);
+
+    const [phoneWidth, setPhoneWidth] = useState(false);
+    const [phoneHeader, setPhoneHeader] = useState(false);
     
     useEffect(() => {
         const formPage = sessionStorage.getItem("formPage");
         if (formPage) {
             setDisplayForm(parseInt(formPage));
         } else setDisplayForm(0);
+
+        window.innerWidth < 850 ? setPhoneWidth(true) : setPhoneWidth(false);
+        window.innerWidth < 680 ? setPhoneHeader(true) : setPhoneHeader(false);
     }, []);
+
+    const handleResize = () => {
+        window.innerWidth < 850 ? setPhoneWidth(true) : setPhoneWidth(false);
+        window.innerWidth < 650 ? setPhoneHeader(true) : setPhoneHeader(false);
+    }
 
     const goPrevious = () => {
         setDisplayForm(0);
@@ -30,6 +42,7 @@ export const AddRecording = () => {
 
     useEffect(() => {
         if(formResponse) {
+            console.log(formResponse);
             sessionStorage.clear();
 
             navigate("success");
@@ -50,14 +63,32 @@ export const AddRecording = () => {
         }
     }
 
+    window.addEventListener("resize", handleResize);
+
+    const PCHeader = () => {
+        return (
+            <div className="formHeader">
+                <span onClick={handleUserNavigate}>თანამშრომლის ინფო {displayForm === 0 && <hr />}</span>
+                {window.innerWidth > 680 && <span onClick={handleLaptopNavigate}>ლეპტოპის მახასიათებლები {displayForm === 1 && <hr className="laptopHr" />}</span>}
+            </div>
+        )
+    }
+
+    const PHHeader = () => {
+        return (
+            <div className="mobileFormHeader">
+                <span>{displayForm === 0 ? "თანამშრომლის ინფო" : "ლეპტოპის მახასიათებლები"}</span>
+                <p>{displayForm === 0 ? "1/2" : "2/2"}</p>
+            </div>
+        )
+    }
+
     return (
         <div className="addRecordWrapper">
-            <Exit className="exitBtn" onClick={() => { displayForm === 0 ? navigate(-1) : goPrevious(); }} />
+            {phoneWidth ? <PhoneExit className="phoneExitBtn" onClick={() => { displayForm === 0 ? navigate(-1) : goPrevious(); }} /> 
+            : <Exit className="exitBtn" onClick={() => { displayForm === 0 ? navigate(-1) : goPrevious(); }} />}
             <div className="formWrapper">
-                <div className="formHeader">
-                    <span onClick={handleUserNavigate}>თანამშრომლის ინფო {displayForm === 0 && <hr />}</span>
-                    <span onClick={handleLaptopNavigate}>ლეპტოპის მახასიათებლები {displayForm === 1 && <hr className="laptopHr" />}</span>
-                </div>
+                {phoneHeader ? <PHHeader /> : <PCHeader />}
                 {displayForm === 0 ? <UserForm setPage={setDisplayForm} /> : <LaptopForm setPage={setDisplayForm} emitResponse={setFormResponse} />}
             </div>
         </div>

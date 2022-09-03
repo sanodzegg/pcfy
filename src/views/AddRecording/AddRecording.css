@@ -1,12 +1,33 @@
+@media screen and (max-width: 925px) {
+  .addRecordWrapper {
+    padding: 0 15px;
+  }
+}
 .addRecordWrapper .exitBtn {
   cursor: pointer;
   position: absolute;
   left: 70px;
   top: 50px;
 }
+@media screen and (max-width: 1135px) {
+  .addRecordWrapper .exitBtn {
+    left: 6.167vw;
+  }
+}
+.addRecordWrapper .phoneExitBtn {
+  cursor: pointer;
+  position: absolute;
+  left: 3vw;
+  top: 11.176vw;
+}
 .addRecordWrapper .formWrapper {
   margin: 0 auto;
   margin-top: 90px;
+}
+@media screen and (max-width: 850px) {
+  .addRecordWrapper .formWrapper {
+    margin-top: 10.588vw;
+  }
 }
 .addRecordWrapper .formWrapper .formHeader {
   text-align: center;
@@ -29,4 +50,25 @@
 }
 .addRecordWrapper .formWrapper .formHeader span:nth-child(2) hr {
   width: 225px;
+}
+.addRecordWrapper .formWrapper .mobileFormHeader {
+  text-align: center;
+}
+.addRecordWrapper .formWrapper .mobileFormHeader span {
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 700;
+  margin: 0 25px;
+}
+@media screen and (max-width: 375px) {
+  .addRecordWrapper .formWrapper .mobileFormHeader span {
+    font-size: 5.333vw;
+    white-space: nowrap;
+  }
+}
+.addRecordWrapper .formWrapper .mobileFormHeader p {
+  margin-top: 5px;
+  font-size: 17px;
+  line-height: 16.5px;
+  color: #898989;
 }/*# sourceMappingURL=AddRecording.css.map */

@@ -11,6 +11,15 @@
 .landingWrapper .frame {
   margin-top: 5px;
 }
+@media screen and (max-width: 825px) {
+  .landingWrapper .frame {
+    width: 100%;
+    padding: 0 25px;
+  }
+}
+.landingWrapper .phoneFrame {
+  height: 500px;
+}
 .landingWrapper .btnsWrapper {
   display: flex;
   flex-direction: column;

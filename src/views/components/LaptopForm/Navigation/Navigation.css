@@ -5,6 +5,11 @@
   align-items: center;
   margin-top: 50px;
 }
+@media screen and (max-width: 850px) {
+  .navWrapper {
+    margin-bottom: 5.882vw;
+  }
+}
 .navWrapper button {
   background-color: #62A1EB;
   font-size: 20px;
@@ -18,6 +23,12 @@
   max-width: 385px;
   cursor: pointer;
 }
+@media screen and (max-width: 715px) {
+  .navWrapper button {
+    padding: 2.098vw 8.392vw;
+    font-size: 18px;
+  }
+}
 .navWrapper button:nth-child(1) {
   background-color: transparent !important;
   color: #62A1EB !important;
@@ -27,4 +38,9 @@
 .postman {
   width: 100%;
   margin: 70px auto 50px auto;
+}
+@media screen and (max-width: 850px) {
+  .postman {
+    display: none;
+  }
 }/*# sourceMappingURL=Navigation.css.map */

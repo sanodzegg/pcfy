@@ -6,6 +6,17 @@
   -moz-column-gap: 50px;
        column-gap: 50px;
 }
+@media screen and (max-width: 850px) {
+  .userFN {
+    margin-top: 11.765vw;
+  }
+}
+@media screen and (max-width: 715px) {
+  .userFN {
+    flex-direction: column;
+    row-gap: 25px;
+  }
+}
 .userFN div {
   width: 100%;
 }
@@ -15,14 +26,14 @@
   line-height: 21px;
   font-weight: 500;
 }
-.userFN div label span {
+.userFN div span {
   font-size: 14px;
   line-height: 21px;
   font-weight: 300;
   display: block;
   color: #2E2E2E;
 }
-.userFN div label input {
+.userFN div input {
   margin: 10px 0;
   box-sizing: border-box;
   width: 100%;
@@ -34,17 +45,17 @@
   border: 2px solid #8AC0E2;
   outline: unset;
 }
-.userFN div label input::-moz-placeholder {
+.userFN div input::-moz-placeholder {
   font-size: 16px;
   line-height: 21px;
   font-weight: 400;
 }
-.userFN div label input:-ms-input-placeholder {
+.userFN div input:-ms-input-placeholder {
   font-size: 16px;
   line-height: 21px;
   font-weight: 400;
 }
-.userFN div label input::placeholder {
+.userFN div input::placeholder {
   font-size: 16px;
   line-height: 21px;
   font-weight: 400;

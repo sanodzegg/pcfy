@@ -57,7 +57,9 @@ export const AboutLaptop = ({ emitErrors, errors, show, emitData, revalidate }) 
             const dd = newArr[2];
             const newDate = `${dd}-${mm}-${yy}`;
 
-            yy > 1950 && yy < 2010 ? 
+            const now = new Date().getFullYear();
+
+            yy > 1990 && yy <= now ? 
             emitErrors((prev) => ({ ...prev, date: true })) : emitErrors((prev) => ({ ...prev, date: false }));
             
             setDate(newDate);
@@ -99,7 +101,7 @@ export const AboutLaptop = ({ emitErrors, errors, show, emitData, revalidate }) 
         <div className="aboutLaptop-col">
             <div className={classes.dateInput}>
                 <label htmlFor="date">შეძენის რიცხვი (არჩევითი)</label>
-                <input onFocus={(e) => e.target.type = "DATE"} maxLength={14} onChange={(e) => handleDateChange(e.target.value)} onBlur={handleDateBlur} type="text" name="date" min="1950-01-01" max="2010-01-01" placeholder="დდ / თთ / წწწწ" value={localDate ? localDate : ""} />
+                <input onFocus={(e) => e.target.type = "DATE"} maxLength={14} onChange={(e) => handleDateChange(e.target.value)} onBlur={handleDateBlur} type="text" name="date" min="1990-01-01" placeholder="დდ / თთ / წწწწ" value={localDate ? localDate : ""} />
             </div>
             <div className={classes.priceInput}>
                 <label htmlFor="price">ლეპტოპის ფასი</label>

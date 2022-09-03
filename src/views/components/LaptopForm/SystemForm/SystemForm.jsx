@@ -23,14 +23,6 @@ export const SystemForm = ({ laptopSet, errors, show, ID, emitData, emitErrors, 
   const ssdRadio = useRef(null);
   const hddRadio = useRef(null);
 
-  const rgx = /\d+/g;
-  
-  useEffect(() => {
-    if(sessionStorage.getItem("cpuReset") !== "false") {
-      setSelectCPU({});
-    } sessionStorage.setItem("cpuReset", false);
-  });
-
   useEffect(() => {
     if(data?.laptop_brand_id) {
       setCpuAccessible(true);
@@ -69,7 +61,6 @@ export const SystemForm = ({ laptopSet, errors, show, ID, emitData, emitErrors, 
     }
   }, [revalidate]);
 
-
   const handleCPUSelect = (e) => {
     if(!e && data?.laptop_cpu && data?.laptop_cpu.name) {
       setSelectCPU(data.laptop_cpu);
@@ -89,42 +80,27 @@ export const SystemForm = ({ laptopSet, errors, show, ID, emitData, emitErrors, 
   }
 
   const handleCoresBlur = () => {
-    if(cores) {
-      const coresStr = cores.toString();
-      
-      emitData((prev) => ({ ...prev, laptop_cpu_cores: parseInt(cores) }));
-      if(coresStr.match(rgx) && coresStr.length > 0) {
-        emitErrors((prev) => ({ ...prev, cores: true }));
-      } else {
-        emitErrors((prev) => ({ ...prev, cores: false }));
-      }
-    }
+    emitData((prev) => ({ ...prev, laptop_cpu_cores: parseInt(cores) }));
+
+    if((cores !== "" && cores !== null) && !isNaN(parseInt(cores))) {
+      emitErrors((prev) => ({ ...prev, cores: true }));
+    } else emitErrors((prev) => ({ ...prev, cores: false }));
   }
 
   const handleThreadsBlur = () => {
-    if(threads) {
-      const threadsStr = threads.toString();
-    
-      emitData((prev) => ({ ...prev, laptop_cpu_threads: parseInt(threads) }));
-      if(threadsStr.match(rgx) && threadsStr.length > 0) {
-        emitErrors((prev) => ({ ...prev, threads: true }));
-      } else {
-        emitErrors((prev) => ({ ...prev, threads: false }));
-      }
-    }
+    emitData((prev) => ({ ...prev, laptop_cpu_threads: parseInt(threads) }));
+
+    if((threads !== "" && threads !== null) && !isNaN(parseInt(threads))) {
+      emitErrors((prev) => ({ ...prev, threads: true }));
+    } else emitErrors((prev) => ({ ...prev, threads: false }));
   }
 
   const handleRAMBlur = () => {
-    if(ram) {
-      const ramStr = ram.toString();
+    emitData((prev) => ({ ...prev, laptop_ram: parseInt(ram) }));
 
-      emitData((prev) => ({ ...prev, laptop_ram: parseInt(ram) }));
-      if(ramStr.match(rgx) && ramStr.length > 0) {
-        emitErrors((prev) => ({ ...prev, ram: true }));
-      } else {
-        emitErrors((prev) => ({ ...prev, ram: false }));
-      }
-    }
+    if((ram !== "" && ram !== null) && !isNaN(parseInt(ram))) {
+      emitErrors((prev) => ({ ...prev, ram: true }));
+    } else emitErrors((prev) => ({ ...prev, ram: false }));
   }
 
   const handleSSD = () => {

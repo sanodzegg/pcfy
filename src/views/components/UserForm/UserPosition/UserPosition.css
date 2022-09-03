@@ -14,6 +14,11 @@
       -ms-user-select: none;
           user-select: none;
 }
+@media screen and (max-width: 850px) {
+  .teamSelector, .posSelector {
+    margin-top: 5.882vw;
+  }
+}
 .teamSelector span, .posSelector span {
   font-weight: 500;
   font-size: 18px;

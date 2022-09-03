@@ -37,9 +37,20 @@
   cursor: pointer;
   margin-top: 100px;
 }
+@media screen and (max-width: 850px) {
+  .userFormWrapper .btnWrapper button {
+    margin-top: 11.235vw;
+    margin-bottom: 5vw;
+  }
+}
 .userFormWrapper .postman {
   margin: 0 auto;
   width: 100%;
   margin-bottom: 45px;
   margin-top: 60px;
+}
+@media screen and (max-width: 850px) {
+  .userFormWrapper .postman {
+    display: none;
+  }
 }/*# sourceMappingURL=UserForm.css.map */

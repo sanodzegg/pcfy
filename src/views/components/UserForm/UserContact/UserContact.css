@@ -1,6 +1,11 @@
 .mail, .phoneNum {
   margin-top: 50px;
 }
+@media screen and (max-width: 850px) {
+  .mail, .phoneNum {
+    margin-top: 5.882vw;
+  }
+}
 .mail.invalid label, .mail.invalid span, .phoneNum.invalid label, .phoneNum.invalid span {
   color: red;
 }
@@ -15,7 +20,7 @@
 .mail .pnWrapper .pnsup, .phoneNum .pnWrapper .pnsup {
   position: absolute;
   top: 49.5%;
-  left: 4%;
+  left: 35px;
   transform: translate(-50%, -50%);
   font-size: 16px;
   line-height: 21px;

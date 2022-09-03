@@ -8,6 +8,11 @@
   margin: 0 auto;
   margin-top: 70px;
 }
+@media screen and (max-width: 850px) {
+  .laptopFormWrapper form {
+    margin-top: 8.235vw;
+  }
+}
 .laptopFormWrapper form .imgUploadWrapper {
   width: 100%;
   height: 420px;
@@ -18,6 +23,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+@media screen and (max-width: 850px) {
+  .laptopFormWrapper form .imgUploadWrapper {
+    height: 59vw;
+  }
 }
 .laptopFormWrapper form .imgUploadWrapper .error {
   margin-bottom: 20px;
@@ -31,6 +41,9 @@
 }
 .laptopFormWrapper form .imgUploadWrapper.invalid span {
   color: #E52F2F;
+}
+.laptopFormWrapper form .imgUploadWrapper.pnUpload {
+  cursor: pointer;
 }
 .laptopFormWrapper form .imgUploadWrapper span {
   font-weight: 500;
@@ -55,11 +68,17 @@
   font-size: 20px;
   margin-top: 65px;
 }
+@media screen and (max-width: 445px) {
+  .laptopFormWrapper form .imgUploadWrapper button {
+    display: none;
+  }
+}
 .laptopFormWrapper form .imgUploadWrapper input[type=file],
 .laptopFormWrapper form .imgUploadWrapper input[type=image] {
   display: none;
   pointer-events: none;
-  max-width: 110%;
+  width: 100%;
+  height: 100%;
   -o-object-fit: fill;
      object-fit: fill;
   -webkit-user-select: none;
@@ -73,6 +92,17 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
+}
+@media screen and (max-width: 850px) {
+  .laptopFormWrapper form .uploadInfoWrapper {
+    padding: 2.941vw 0;
+  }
+}
+@media screen and (max-width: 390px) {
+  .laptopFormWrapper form .uploadInfoWrapper {
+    -moz-column-gap: 10px;
+         column-gap: 10px;
+  }
 }
 .laptopFormWrapper form .uploadInfoWrapper button {
   background-color: #62A1EB;
@@ -90,18 +120,66 @@
   font-size: 20px;
   line-height: 25px;
 }
+@media screen and (max-width: 595px) {
+  .laptopFormWrapper form .uploadInfoWrapper button {
+    padding: 3.025vw 4.202vw;
+    white-space: nowrap;
+  }
+}
+@media screen and (max-width: 390px) {
+  .laptopFormWrapper form .uploadInfoWrapper button {
+    font-size: 4.737vw;
+    line-height: 5.789vw;
+  }
+}
 .laptopFormWrapper form .uploadInfoWrapper .fileInfo {
   display: flex;
   align-items: center;
   justify-content: flex-start;
 }
+@media screen and (max-width: 670px) {
+  .laptopFormWrapper form .uploadInfoWrapper .fileInfo {
+    flex-wrap: wrap;
+  }
+}
+@media screen and (max-width: 445px) {
+  .laptopFormWrapper form .uploadInfoWrapper .fileInfo {
+    flex-wrap: unset;
+    -moz-column-gap: 15px;
+         column-gap: 15px;
+  }
+}
+.laptopFormWrapper form .uploadInfoWrapper .fileInfo svg {
+  min-width: 22px;
+}
 .laptopFormWrapper form .uploadInfoWrapper .fileInfo .imgName {
   margin: 0 15px 0 25px;
+}
+@media screen and (max-width: 850px) {
+  .laptopFormWrapper form .uploadInfoWrapper .fileInfo .imgName {
+    margin: 0 1.765vw 0 2.941vw;
+  }
 }
 .laptopFormWrapper form .uploadInfoWrapper .fileInfo .fileSize {
   color: #5F5F5F;
   font-size: 17px;
   line-height: 20px;
+}
+@media screen and (max-width: 670px) {
+  .laptopFormWrapper form .uploadInfoWrapper .fileInfo .fileSize {
+    display: none;
+  }
+}
+.laptopFormWrapper form .uploadInfoWrapper .fileInfo .fileInfoWrapper {
+  display: flex;
+  flex-direction: column;
+}
+.laptopFormWrapper form .uploadInfoWrapper .fileInfo .fileInfoWrapper .imgName {
+  margin: 0;
+}
+.laptopFormWrapper form .uploadInfoWrapper .fileInfo .fileInfoWrapper .fileSize {
+  margin: 0;
+  display: block;
 }
 .laptopFormWrapper .laptopBrandWrapper {
   margin-top: 50px;
@@ -111,6 +189,17 @@
   align-items: center;
   -moz-column-gap: 50px;
        column-gap: 50px;
+}
+@media screen and (max-width: 850px) {
+  .laptopFormWrapper .laptopBrandWrapper {
+    margin-top: 5.882vw;
+  }
+}
+@media screen and (max-width: 715px) {
+  .laptopFormWrapper .laptopBrandWrapper {
+    flex-direction: column;
+    row-gap: 30px;
+  }
 }
 .laptopFormWrapper .laptopBrandWrapper .nameInput.invalid input {
   border: 2px solid red;
@@ -216,4 +305,9 @@
   margin: 50px 0;
   border: 1px solid #C7C7C7;
   width: 100%;
+}
+@media screen and (max-width: 715px) {
+  .laptopFormWrapper .defaultHr {
+    display: none;
+  }
 }/*# sourceMappingURL=LaptopForm.css.map */

@@ -34,6 +34,11 @@ export const UserPosition = ({ revalidate, errs, show, setErrs, emitData }) => {
 
 
     const handleTeamSelect = (e) => {
+      setErrs((prev) => ({
+        ...prev,
+        position: false
+      }));
+
       setSelectedTeam(e);
       setDisplayTeam(false);
       setPosAccessible(true);
@@ -107,7 +112,7 @@ export const UserPosition = ({ revalidate, errs, show, setErrs, emitData }) => {
     const posArr = Object.values(selectedPos).length;
 
     const teamClass = `teamSelector${!data?.team_id && show && (errs.team === null || errs.team) ? " invalid" : ""}`;
-    const posClass = `posSelector${(!posArr || posArr === 0) && show && (errs.position === null || errs.position) ? " invalid" : ""}${!posAccessible ? " disabled" : ""}`
+    const posClass = `posSelector${(!posArr || posArr === 0) && show && (errs.position === null || !errs.position) ? " invalid" : ""}${!posAccessible ? " disabled" : ""}`
 
     return (
         <>

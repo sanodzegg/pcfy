@@ -1,12 +1,23 @@
 .addRecordWrapper
+    @media screen and ( max-width: 925px )
+        padding: 0 15px
     .exitBtn
         cursor: pointer
         position: absolute
         left: 70px
         top: 50px
+        @media screen and ( max-width: 1135px )
+            left: 6.167vw
+    .phoneExitBtn
+        cursor: pointer
+        position: absolute
+        left: 3vw
+        top: 11.176vw
     .formWrapper
         margin: 0 auto
         margin-top: 90px
+        @media screen and ( max-width: 850px )
+            margin-top: 10.588vw
         .formHeader
             text-align: center
             margin: 0 auto
@@ -27,3 +38,18 @@
             span:nth-child(2)
                 hr
                     width: 225px
+        .mobileFormHeader
+            text-align: center
+            span
+                font-size: 20px
+                line-height: 24px
+                font-weight: 700
+                margin: 0 25px
+                @media screen and ( max-width: 375px )
+                    font-size: 5.333vw
+                    white-space: nowrap
+            p
+                margin-top: 5px
+                font-size: 17px
+                line-height: 16.5px
+                color: #898989

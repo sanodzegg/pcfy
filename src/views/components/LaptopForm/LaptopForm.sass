@@ -8,6 +8,8 @@
         max-width: 875px
         margin: 0 auto
         margin-top: 70px
+        @media screen and ( max-width: 850px )
+            margin-top: 8.235vw
         .imgUploadWrapper
             width: 100%
             height: 420px
@@ -19,6 +21,8 @@
             flex-direction: column
             justify-content: center
             align-items: center
+            @media screen and ( max-width: 850px )
+                height: 59vw
             .error
                 margin-bottom: 20px
                 &.hidden
@@ -28,6 +32,8 @@
                 background-color: #FFF1F1
                 span
                     color: #E52F2F
+            &.pnUpload
+                cursor: pointer
             span
                 font-weight: 500
                 font-size: 20px
@@ -39,11 +45,14 @@
                 @include defaultBtn
                 font-size: 20px
                 margin-top: 65px
+                @media screen and ( max-width: 445px )
+                    display: none
             input[type="file"],
             input[type="image"]
                 display: none
                 pointer-events: none
-                max-width: 110%
+                width: 100%
+                height: 100%
                 object-fit: fill
                 user-select: none
         .uploadInfoWrapper
@@ -52,22 +61,50 @@
             align-items: center
             justify-content: space-between
             width: 100%
+            @media screen and ( max-width: 850px )
+                padding: 2.941vw 0
+            @media screen and ( max-width: 390px )
+                column-gap: 10px
             button
                 @include defaultBtn
                 padding: 18px 25px
                 font-size: 20px
                 line-height: 25px
+                @media screen and ( max-width: 595px )
+                    padding: 3.025vw 4.202vw
+                    white-space: nowrap
+                @media screen and ( max-width: 390px )
+                    font-size: 4.737vw
+                    line-height: 5.789vw
             .fileInfo
                 display: flex
                 align-items: center
                 justify-content: flex-start
+                @media screen and ( max-width: 670px )
+                    flex-wrap: wrap
+                @media screen and ( max-width: 445px )
+                    flex-wrap: unset
+                    column-gap: 15px
+                svg
+                    min-width: 22px
                 .imgName
                     margin: 0 15px 0 25px
+                    @media screen and ( max-width: 850px )
+                        margin: 0 1.765vw 0 2.941vw
                 .fileSize
                     color: #5F5F5F
                     font-size: 17px
                     line-height: 20px
-
+                    @media screen and ( max-width: 670px )
+                        display: none
+                .fileInfoWrapper
+                    display: flex
+                    flex-direction: column
+                    .imgName
+                        margin: 0
+                    .fileSize
+                        margin: 0
+                        display: block
     .laptopBrandWrapper
         margin-top: 50px
         width: 100%
@@ -76,6 +113,11 @@
         justify-content: space-between
         align-items: center
         column-gap: 50px
+        @media screen and ( max-width: 850px )
+            margin-top: 5.882vw
+        @media screen and ( max-width: 715px )
+            flex-direction: column
+            row-gap: 30px
         .nameInput
             &.invalid
                 input
@@ -149,3 +191,5 @@
         margin: 50px 0
         border: 1px solid #C7C7C7
         width: 100%
+        @media screen and ( max-width: 715px )
+            display: none

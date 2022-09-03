@@ -7,6 +7,10 @@
         justify-content: space-between
         align-items: flex-start
         column-gap: 65px
+        @media screen and ( max-width: 715px )
+            flex-direction: column
+            row-gap: 30px
+            margin-top: 30px
         .dateInput, .priceInput
             width: 100%
             &.invalid
@@ -82,3 +86,5 @@
                         display: none
     .aboutLaptop-col:nth-child(2)
         margin-top: 50px
+        @media screen and ( max-width: 715px )
+            margin-top: 30px

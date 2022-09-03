@@ -6,8 +6,13 @@
     justify-content: space-between
     align-items: center
     margin-top: 50px
+    @media screen and ( max-width: 850px )
+        margin-bottom: 5.882vw
     button
         @include defaultBtn
+        @media screen and ( max-width: 715px )
+            padding: 2.098vw 8.392vw
+            font-size: 18px
     button:nth-child(1)
         background-color: transparent !important
         color: #62A1EB !important
@@ -16,3 +21,5 @@
 .postman
     width: 100%
     margin: 70px auto 50px auto
+    @media screen and ( max-width: 850px )
+        display: none

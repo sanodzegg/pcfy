@@ -4,6 +4,8 @@ export const LaptopAbout = ({ laptopData }) => {
 
     const state = laptopData.state === "new" ? "ახალი" : "მეორადი";
 
+    const parsedDate = laptopData.purchase_date && laptopData?.purchase_date.split("-").join(" / ");
+
     return (
         <div className="laptopAboutWrapper">
             <div className="col">
@@ -19,7 +21,7 @@ export const LaptopAbout = ({ laptopData }) => {
             {
                 laptopData.purchase_date && 
                 <div className="col">
-                    <p>შეძენის რიცხვი: <span>{laptopData.purchase_date}</span></p>
+                    <p>შეძენის რიცხვი: <span>{parsedDate}</span></p>
                 </div>
             }
         </div>

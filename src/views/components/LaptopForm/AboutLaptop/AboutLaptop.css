@@ -8,6 +8,13 @@
   -moz-column-gap: 65px;
        column-gap: 65px;
 }
+@media screen and (max-width: 715px) {
+  .aboutLaptopWrapper .aboutLaptop-col {
+    flex-direction: column;
+    row-gap: 30px;
+    margin-top: 30px;
+  }
+}
 .aboutLaptopWrapper .aboutLaptop-col .dateInput, .aboutLaptopWrapper .aboutLaptop-col .priceInput {
   width: 100%;
 }
@@ -116,4 +123,9 @@
 }
 .aboutLaptopWrapper .aboutLaptop-col:nth-child(2) {
   margin-top: 50px;
+}
+@media screen and (max-width: 715px) {
+  .aboutLaptopWrapper .aboutLaptop-col:nth-child(2) {
+    margin-top: 30px;
+  }
 }/*# sourceMappingURL=AboutLaptop.css.map */

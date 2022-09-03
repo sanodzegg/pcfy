@@ -4,6 +4,7 @@ export const UserContact = ({ revalidate, errs, show, setErrs, emitData }) => {
   const data = JSON.parse(sessionStorage.getItem("userData"));
 
   const [showSupport, setShowSupport] = useState(false);
+  const [phoneDisplay, setPhoneDisplay] = useState(false);
 
   const [mail, setMail] = useState(data?.email ? data.email : "");
   const [pn, setPN] = useState(data?.phone_number ? data.phone_number : "");
@@ -48,12 +49,22 @@ export const UserContact = ({ revalidate, errs, show, setErrs, emitData }) => {
     setPN(newval);
   }
 
+  const handleResize = () => {
+    window.innerWidth < 615 ? setPhoneDisplay(true) : setPhoneDisplay(false);
+  }
+
+  useEffect(() => {
+    handleResize();
+  }, []);
+
   useEffect(() => {
     if(revalidate) {
       handleMail();
       handlePN();
     }
   }, [revalidate]);
+
+  window.addEventListener("resize", handleResize)
 
   const mailClass = `mail${mail && errs.mail === null ? "" : errs.mail === false && show ? " invalid" : ""}`;
   const pnClass = `phoneNum${pn && errs.pn === null ? "" : errs.pn === false && show ? " invalid" : ""}`;
@@ -71,7 +82,7 @@ export const UserContact = ({ revalidate, errs, show, setErrs, emitData }) => {
             <input maxLength={11} onFocus={() => {setShowSupport(true); handlePNFocus()}} onChange={(e) => handlePNChange(e.target.value)} onBlur={() => {setShowSupport(false); handlePN(); handlePNBlur()}} type="text" name="pn" placeholder="+995 598 00 07 01" value={pn ? pn : ""} />
             {showSupport && <span className="pnsup">+995</span>}
           </div>
-          <span>უნდა აკმაყოფილებდეს ქართული მობ-ნომრის ფორმატს</span>
+          <span>{phoneDisplay ? "ქართული მობ-ნომრის ფორმატი" : "უნდა აკმაყოფილებდეს ქართული მობ-ნომრის ფორმატს"}</span>
         </div>
     </>
   );
