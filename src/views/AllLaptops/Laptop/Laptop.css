@@ -10,10 +10,25 @@
   -moz-column-gap: 30px;
        column-gap: 30px;
 }
+@media screen and (max-width: 925px) {
+  .laptopWrapper {
+    max-width: unset;
+  }
+}
 .laptopWrapper .laptopImgWrapper {
   width: 265px;
   height: 180px;
   border-radius: 10px;
+}
+@media screen and (max-width: 925px) {
+  .laptopWrapper .laptopImgWrapper {
+    width: 55%;
+  }
+}
+@media screen and (max-width: 460px) {
+  .laptopWrapper .laptopImgWrapper {
+    height: 115%;
+  }
 }
 .laptopWrapper .laptopImgWrapper img {
   width: 100%;
@@ -33,6 +48,11 @@
 .laptopWrapper .laptopInfoWrapper .laptop {
   margin-top: 20px;
   margin-bottom: 40px;
+}
+@media screen and (max-width: 925px) {
+  .laptopWrapper .laptopInfoWrapper .laptop {
+    margin: 10px 0;
+  }
 }
 .laptopWrapper .laptopInfoWrapper .seeMore {
   font-size: 16px;

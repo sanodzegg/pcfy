@@ -202,13 +202,13 @@
   }
 }
 .laptopFormWrapper .laptopBrandWrapper .nameInput.invalid input {
-  border: 2px solid red;
+  border: 2px solid #E52F2F;
 }
 .laptopFormWrapper .laptopBrandWrapper .nameInput.invalid span, .laptopFormWrapper .laptopBrandWrapper .nameInput.invalid label {
-  color: red;
+  color: #E52F2F;
 }
 .laptopFormWrapper .laptopBrandWrapper .brandInput.invalid .laptopSelector {
-  border: 2px solid red;
+  border: 2px solid #E52F2F;
 }
 .laptopFormWrapper .laptopBrandWrapper div {
   width: 100%;

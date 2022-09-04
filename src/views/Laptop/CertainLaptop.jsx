@@ -5,6 +5,7 @@ import "./CertainLaptop.css";
 import axios from "axios";
 
 import { ReactComponent as Exit } from "assets/svg/exit.svg";
+import { ReactComponent as PhoneExit } from "assets/svg/phoneExit.svg";
 
 import { LaptopInfo } from "views/components/CertainLaptop/LaptopInfo/LaptopInfo";
 import { LaptopSys } from "views/components/CertainLaptop/LaptopSys/LaptopAbout";
@@ -34,6 +35,7 @@ getData();
 
 export const CertainLaptop = () => {
 
+    const [phoneWidth, setPhoneWidth] = useState(false);
     const [laptopInfo, setLaptopInfo] = useState(null);
 
     const navigate = useNavigate();
@@ -41,7 +43,7 @@ export const CertainLaptop = () => {
 
     useEffect(() => {
         const getCertainLaptop = async () => {
-            const res = await axios.get(`https://pcfy.redberryinternship.ge/api/laptop/${params.id}?token=254c17394feb86133ca156ef9b4d9a91`);
+            const res = await axios.get(`https://pcfy.redberryinternship.ge/api/laptop/${params.id}?token=${process.env.REACT_APP_TOKEN}`);
             const data = await res.data.data;
             setLaptopInfo(data);
         }
@@ -49,9 +51,20 @@ export const CertainLaptop = () => {
         getCertainLaptop();
     }, [params]);
 
+    useEffect(() => {
+        handleResize();
+    }, []);
+
+    const handleResize = () => {
+        window.innerWidth < 850 ? setPhoneWidth(true) : setPhoneWidth(false);
+    }
+
+    window.addEventListener("resize", handleResize);
+
     return (
         <div className="certainLaptopWrapper">
-            <Exit onClick={() => navigate("/recordings")} />
+            {phoneWidth ? <PhoneExit className="phoneExit" onClick={() => navigate("/recordings")} /> 
+            : <Exit onClick={() => navigate("/recordings")} />}
             <h1>ლეპტოპის ინფო</h1>
             <div className="certainLaptopWrapper">
                 {
@@ -61,7 +74,7 @@ export const CertainLaptop = () => {
                         <hr />
                         <LaptopSys laptopData={laptopInfo.laptop} brand={brand} />
                         <hr />
-                        <LaptopAbout laptopData={laptopInfo.laptop} />
+                        <LaptopAbout phone={phoneWidth} laptopData={laptopInfo.laptop} />
                     </>
                 }
             </div>

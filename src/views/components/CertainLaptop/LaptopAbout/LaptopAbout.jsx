@@ -1,6 +1,6 @@
 import "./LaptopAbout.css";
 
-export const LaptopAbout = ({ laptopData }) => {
+export const LaptopAbout = ({ phone, laptopData }) => {
 
     const state = laptopData.state === "new" ? "ახალი" : "მეორადი";
 
@@ -10,8 +10,8 @@ export const LaptopAbout = ({ laptopData }) => {
         <div className="laptopAboutWrapper">
             <div className="col">
                 <div className="innerCol">
-                    <p>ლეპტოპის მდგომარეობა</p>
-                    <p>ლეპტოპის ფასი</p>
+                    <p>{phone ? "მდგომარეობა:" : "ლეპტოპის მდგომარეობა:"}</p>
+                    <p>ლეპტოპის ფასი:</p>
                 </div>
                 <div className="innerCol">
                     <p>{state}</p>

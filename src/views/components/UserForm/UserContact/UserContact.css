@@ -7,10 +7,10 @@
   }
 }
 .mail.invalid label, .mail.invalid span, .phoneNum.invalid label, .phoneNum.invalid span {
-  color: red;
+  color: #E52F2F;
 }
 .mail.invalid input, .phoneNum.invalid input {
-  border: 2px solid red;
+  border: 2px solid #E52F2F;
 }
 .mail .pnWrapper, .phoneNum .pnWrapper {
   width: auto;
@@ -19,7 +19,7 @@
 }
 .mail .pnWrapper .pnsup, .phoneNum .pnWrapper .pnsup {
   position: absolute;
-  top: 49.5%;
+  top: 37px;
   left: 35px;
   transform: translate(-50%, -50%);
   font-size: 16px;

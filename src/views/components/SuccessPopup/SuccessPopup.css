@@ -9,18 +9,47 @@
   justify-content: center;
   align-items: center;
 }
+@media screen and (max-width: 600px) {
+  .popupWrapper {
+    background-color: #FFF;
+  }
+}
 .popupWrapper .popup {
   background-color: #FFF;
   text-align: center;
   border-radius: 10px;
   max-width: 850px;
+  width: 100%;
+}
+@media screen and (max-width: 850px) {
+  .popupWrapper .popup {
+    max-width: unset;
+  }
+}
+@media screen and (max-width: 600px) {
+  .popupWrapper .popup {
+    align-self: flex-end;
+  }
+}
+.popupWrapper .popup .popupInner {
+  padding: 0 15px;
+}
+@media screen and (max-width: 390px) {
+  .popupWrapper .popup .popupInner svg {
+    width: 100%;
+  }
 }
 .popupWrapper .popup .popupInner p {
   margin: 0 0 80px 0;
   font-weight: 700;
   font-size: 25px;
   line-height: 31px;
-  padding: 0 265px;
+}
+@media screen and (max-width: 390px) {
+  .popupWrapper .popup .popupInner p {
+    width: 160px;
+    margin: 0 auto;
+  }
 }
 .popupWrapper .popup .popupInner button {
   background-color: #62A1EB;
@@ -35,6 +64,12 @@
   max-width: 385px;
   cursor: pointer;
   font-size: 20px !important;
+}
+@media screen and (max-width: 390px) {
+  .popupWrapper .popup .popupInner button {
+    padding: 3.846vw 15.385vw;
+    margin-top: 160px;
+  }
 }
 .popupWrapper .popup .popupInner span {
   display: block;

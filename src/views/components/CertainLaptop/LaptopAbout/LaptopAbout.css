@@ -5,11 +5,30 @@
   align-items: center;
   margin-bottom: 100px;
 }
+@media screen and (max-width: 1100px) {
+  .laptopAboutWrapper {
+    flex-direction: column;
+    row-gap: 30px;
+  }
+}
+@media screen and (max-width: 475px) {
+  .laptopAboutWrapper {
+    row-gap: 0;
+    margin-bottom: 30px;
+  }
+}
 .laptopAboutWrapper .col {
   display: flex;
   align-items: flex-start;
   -moz-column-gap: 80px;
        column-gap: 80px;
+}
+@media screen and (max-width: 660px) {
+  .laptopAboutWrapper .col {
+    -moz-column-gap: 17.5vw;
+         column-gap: 17.5vw;
+    width: 100%;
+  }
 }
 .laptopAboutWrapper .col .innerCol p {
   font-size: 22px;
@@ -18,12 +37,35 @@
   margin: 25px 0;
   font-weight: 500;
 }
+@media screen and (max-width: 660px) {
+  .laptopAboutWrapper .col .innerCol p {
+    margin: 3.788vw 0;
+  }
+}
+@media screen and (max-width: 475px) {
+  .laptopAboutWrapper .col .innerCol p {
+    font-size: 3.8vw;
+    line-height: 4vw;
+  }
+}
+@media screen and (max-width: 390px) {
+  .laptopAboutWrapper .col .innerCol p {
+    margin: 0;
+    font-size: 3.59vw;
+    line-height: 6.41vw;
+  }
+}
 .laptopAboutWrapper .col .innerCol:nth-child(2) p {
   color: #797979;
   font-weight: 400;
 }
 .laptopAboutWrapper .col:nth-child(2) {
   margin-right: 125px;
+}
+@media screen and (max-width: 1100px) {
+  .laptopAboutWrapper .col:nth-child(2) {
+    margin-right: unset;
+  }
 }
 .laptopAboutWrapper .col:nth-child(2) p {
   font-size: 22px;
@@ -32,8 +74,36 @@
   margin: 25px 0;
   font-weight: 500;
 }
+@media screen and (max-width: 660px) {
+  .laptopAboutWrapper .col:nth-child(2) p {
+    margin: 3.788vw 0;
+  }
+}
+@media screen and (max-width: 475px) {
+  .laptopAboutWrapper .col:nth-child(2) p {
+    font-size: 3.8vw;
+    line-height: 4vw;
+  }
+}
+@media screen and (max-width: 390px) {
+  .laptopAboutWrapper .col:nth-child(2) p {
+    margin: 0;
+    font-size: 3.59vw;
+    line-height: 6.41vw;
+  }
+}
 .laptopAboutWrapper .col:nth-child(2) span {
   color: #797979;
   font-weight: 400;
   margin-left: 80px;
+}
+@media screen and (max-width: 475px) {
+  .laptopAboutWrapper .col:nth-child(2) span {
+    margin-left: 63px;
+  }
+}
+@media screen and (max-width: 380px) {
+  .laptopAboutWrapper .col:nth-child(2) span {
+    margin-left: 16.154vw;
+  }
 }/*# sourceMappingURL=LaptopAbout.css.map */

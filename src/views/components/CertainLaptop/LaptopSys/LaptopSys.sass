@@ -3,10 +3,19 @@
     display: flex
     justify-content: space-between
     align-items: center
+    @media screen and ( max-width: 965px )
+        flex-direction: column
+        row-gap: 30px
+    @media screen and ( max-width: 660px )
+        row-gap: 0
     .col
         display: flex
         align-items: flex-start
         column-gap: 80px
+        @media screen and ( max-width: 660px )
+            column-gap: 10.606vw
+            width: 100%
+            column-gap: 12.3vw
         .innerCol
             p
                 font-size: 22px
@@ -14,9 +23,25 @@
                 color: #2E2E2E
                 margin: 25px 0
                 font-weight: 500
+                @media screen and ( max-width: 660px )
+                    margin: 3.788vw 0
+                @media screen and ( max-width: 475px )
+                    font-size: 3.8vw
+                    line-height: 4vw
+                    white-space: nowrap
+                @media screen and ( max-width: 390px )
+                    margin: 0
+                    font-size: 3.590vw
+                    line-height: 6.410vw
+            p:first-child
+                @media screen and ( max-width: 660px )
+                    margin-top: 0
         .innerCol:nth-child(2)
             p
                 color: #797979
                 font-weight: 400
     .col:nth-child(2)
         margin-right: 150px
+        @media screen and ( max-width: 965px )
+            margin-right: unset
+            column-gap: 19.7vw

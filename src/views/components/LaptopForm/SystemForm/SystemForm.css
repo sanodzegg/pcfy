@@ -37,7 +37,7 @@
           user-select: none;
 }
 .systemFormWrapper .formWrapper-row .cpuSelector.invalid {
-  border: 2px solid red;
+  border: 2px solid #E52F2F;
 }
 .systemFormWrapper .formWrapper-row .cpuSelector span {
   font-weight: 500;
@@ -76,10 +76,10 @@
   width: 100%;
 }
 .systemFormWrapper .formWrapper-row .cpuCores.invalid label, .systemFormWrapper .formWrapper-row .cpuCores.invalid span, .systemFormWrapper .formWrapper-row .cpuThreads.invalid label, .systemFormWrapper .formWrapper-row .cpuThreads.invalid span, .systemFormWrapper .formWrapper-row .laptopRam.invalid label, .systemFormWrapper .formWrapper-row .laptopRam.invalid span {
-  color: red;
+  color: #E52F2F;
 }
 .systemFormWrapper .formWrapper-row .cpuCores.invalid input, .systemFormWrapper .formWrapper-row .cpuThreads.invalid input, .systemFormWrapper .formWrapper-row .laptopRam.invalid input {
-  border: 2px solid red;
+  border: 2px solid #E52F2F;
 }
 .systemFormWrapper .formWrapper-row .cpuCores label, .systemFormWrapper .formWrapper-row .cpuThreads label, .systemFormWrapper .formWrapper-row .laptopRam label {
   display: block;
@@ -125,7 +125,7 @@
   width: 100%;
 }
 .systemFormWrapper .formWrapper-row .radioWrapper.invalid p {
-  color: red;
+  color: #E52F2F;
 }
 .systemFormWrapper .formWrapper-row .radioWrapper .radioLabelWrapper.flex {
   display: flex;

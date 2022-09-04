@@ -15,7 +15,6 @@ export const LaptopForm = ({ setPage, emitResponse }) => {
   const [imgObj, setIMGObj] = useState({});
   const [accessErrors, setAccessErrors] = useState(false);
   const [checker, setChecker] = useState(false);
-
   const [localData, setLocalData] = useState({
     binary: "",
     laptop_name: "",

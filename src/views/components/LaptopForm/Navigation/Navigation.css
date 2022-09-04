@@ -29,6 +29,9 @@
     font-size: 18px;
   }
 }
+.navWrapper button.sending {
+  background-color: #759ecd;
+}
 .navWrapper button:nth-child(1) {
   background-color: transparent !important;
   color: #62A1EB !important;

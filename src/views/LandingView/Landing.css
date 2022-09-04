@@ -37,4 +37,7 @@
   border-radius: 10px;
   max-width: 385px;
   cursor: pointer;
+}
+.landingWrapper .btnsWrapper button:nth-child(2) {
+  margin-bottom: 35px;
 }/*# sourceMappingURL=Landing.css.map */

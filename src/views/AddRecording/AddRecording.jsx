@@ -10,7 +10,7 @@ import { LaptopForm } from "views/components/LaptopForm/LaptopForm";
 
 export const AddRecording = () => {
 
-    const data = { user: sessionStorage.getItem("userData"), laptop: sessionStorage.getItem("laptopData") };
+    const data = sessionStorage.getItem("userData");
 
     const navigate = useNavigate();
 
@@ -26,8 +26,7 @@ export const AddRecording = () => {
             setDisplayForm(parseInt(formPage));
         } else setDisplayForm(0);
 
-        window.innerWidth < 850 ? setPhoneWidth(true) : setPhoneWidth(false);
-        window.innerWidth < 680 ? setPhoneHeader(true) : setPhoneHeader(false);
+        handleResize();
     }, []);
 
     const handleResize = () => {
@@ -42,22 +41,22 @@ export const AddRecording = () => {
 
     useEffect(() => {
         if(formResponse) {
-            console.log(formResponse);
             sessionStorage.clear();
 
-            navigate("success");
+            formResponse === 200 ? navigate("success") : navigate("snap");
         }
     }, [formResponse]);
     
     const handleUserNavigate = () => {
-        if(data.user) {
+        if(data) {
             setDisplayForm(0);
             sessionStorage.setItem("formPage", 0);
         }    
     }
 
     const handleLaptopNavigate = () => {
-        if(data.laptop) {
+        const lpav = sessionStorage.getItem("lpav") ? true : false;
+        if(lpav) {
             setDisplayForm(1);
             sessionStorage.setItem("formPage", 1);
         }

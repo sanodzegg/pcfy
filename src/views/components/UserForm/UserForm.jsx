@@ -76,7 +76,7 @@ export const UserForm = ({ setPage, emitUserTrue }) => {
 
       if(invalid) {
         setCanSend(false);
-      }
+      } else sessionStorage.setItem("lpav", true);
 
       if(!invalid && canSend) {
         sessionStorage.setItem("formPage", 1);

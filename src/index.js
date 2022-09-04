@@ -12,6 +12,7 @@ import { Landing } from './views/LandingView/Landing';
 import { AddRecording } from './views/AddRecording/AddRecording';
 import { AllLaptops } from 'views/AllLaptops/AllLaptops';
 import { CertainLaptop } from 'views/Laptop/CertainLaptop';
+import { SuccessPopup } from 'views/components/SuccessPopup/SuccessPopup';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -22,6 +23,7 @@ root.render(
         <Route path={"/addRecording"} element={<AddRecording />} />
         <Route path={"/recordings"} element={<AllLaptops />} />
         <Route path={"/recording/:id"} element={<CertainLaptop />} />
+        <Route path={"/addRecording/success"} element={<SuccessPopup />} />
       </Routes>
     </Router>
   </React.StrictMode>

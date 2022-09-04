@@ -1,6 +1,11 @@
 .certainLaptopWrapper {
   max-width: 1175px;
   margin: 0 auto;
+  padding: 0 15px;
+}
+.certainLaptopWrapper .phoneExit {
+  top: 10.5vw;
+  left: 3vw;
 }
 .certainLaptopWrapper svg {
   position: absolute;
@@ -16,8 +21,25 @@
   text-align: center;
   margin-bottom: 85px;
 }
+@media screen and (max-width: 850px) {
+  .certainLaptopWrapper h1 {
+    margin-bottom: 10vw;
+    margin-top: 8.824vw;
+  }
+}
+@media screen and (max-width: 485px) {
+  .certainLaptopWrapper h1 {
+    font-size: 7.01vw;
+    line-height: 8.247vw;
+  }
+}
 .certainLaptopWrapper hr {
   width: 100%;
   border: 1px solid #A5A5A5;
   margin: 80px 0 50px 0;
+}
+@media screen and (max-width: 660px) {
+  .certainLaptopWrapper hr {
+    margin: 7.121vw 0 6.5vw 0;
+  }
 }/*# sourceMappingURL=CertainLaptop.css.map */

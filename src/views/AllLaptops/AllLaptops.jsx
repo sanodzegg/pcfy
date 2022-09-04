@@ -5,16 +5,19 @@ import axios from "axios";
 import { Laptop } from "./Laptop/Laptop";
 
 import { ReactComponent as Exit } from "assets/svg/exit.svg";
+import { ReactComponent as PhoneExit } from "assets/svg/phoneExit.svg";
+
 import { useNavigate } from "react-router-dom";
 
 export const AllLaptops = () => {
 
+  const [phoneWidth, setPhoneWidth] = useState(false);
   const [list, setList] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
     const getAll = async () => {
-      const res = axios.get("https://pcfy.redberryinternship.ge/api/laptops?token=254c17394feb86133ca156ef9b4d9a91");
+      const res = axios.get(`https://pcfy.redberryinternship.ge/api/laptops?token=${process.env.REACT_APP_TOKEN}`);
       const data = await res;
       if(data) {
           const laptops = data.data;
@@ -23,11 +26,19 @@ export const AllLaptops = () => {
     }
 
     getAll();
+
+    handleResize();
   }, []);
+
+  const handleResize = () => {
+    window.innerWidth < 850 ? setPhoneWidth(true) : setPhoneWidth(false);
+  }
+
+  window.addEventListener("resize", handleResize)
 
   return (
     <div className="recordings">
-      <Exit onClick={() => navigate("/")} />
+      {phoneWidth ? <PhoneExit className="phoneExit" onClick={() => navigate("/")} /> : <Exit onClick={() => navigate("/")} />}
       <h1 className="recordingsHeader">ჩანაწერების სია</h1>
       <div className="laptopList">
         {list.map((e, i) => {

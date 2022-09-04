@@ -61,11 +61,11 @@
   font-weight: 400;
 }
 .userFN .invalid label {
-  color: red;
+  color: #E52F2F;
 }
 .userFN .invalid input {
-  border: 2px solid red;
+  border: 2px solid #E52F2F;
 }
 .userFN .invalid span {
-  color: red;
+  color: #E52F2F;
 }/*# sourceMappingURL=UserBasic.css.map */

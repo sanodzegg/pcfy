@@ -12,21 +12,37 @@
     display: flex
     justify-content: center
     align-items: center
+    @media screen and ( max-width: 600px )
+        background-color: #FFF
     .popup
         background-color: #FFF
         text-align: center
         border-radius: 10px
         max-width: 850px
+        width: 100%
+        @media screen and ( max-width: 850px )
+            max-width: unset
+        @media screen and ( max-width: 600px )
+            align-self: flex-end
         .popupInner
+            padding: 0 15px
+            svg
+                @media screen and ( max-width: 390px )
+                    width: 100%
             p
                 margin: 0 0 80px 0
                 font-weight: 700
                 font-size: 25px
                 line-height: 31px
-                padding: 0 265px
+                @media screen and ( max-width: 390px )
+                    width: 160px
+                    margin: 0 auto
             button
                 @include defaultBtn
                 font-size: 20px !important
+                @media screen and ( max-width: 390px )
+                    padding: 3.846vw 15.385vw
+                    margin-top: 160px
             span
                 display: block
                 margin: 30px 0

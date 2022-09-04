@@ -10,6 +10,7 @@ export const Navigation = ({ setPage, setErrors, updateChecker, errors, imgObjec
     const laptopData = JSON.parse(sessionStorage.getItem("laptopData"));
 
     const [canSend, setCanSend] = useState(false);
+    const [sending, setSending] = useState(false);
 
     const sendBtn = useRef(null);
 
@@ -46,8 +47,9 @@ export const Navigation = ({ setPage, setErrors, updateChecker, errors, imgObjec
         if(invalid) {
             setCanSend(false);
         }
-        
+
         if(!invalid && canSend) {
+            setSending(true);
             sendData();
         }
 
@@ -67,7 +69,7 @@ export const Navigation = ({ setPage, setErrors, updateChecker, errors, imgObjec
         newUserData.phone_number = userData.phone_number.split(" ").join("");
 
         const merged = { ...newUserData, ...newLaptopData };
-        merged.token = "254c17394feb86133ca156ef9b4d9a91";
+        merged.token = process.env.REACT_APP_TOKEN;
 
         Object.entries(merged).forEach(pair => {
             formData.append(pair[0], pair[1]);
@@ -76,8 +78,9 @@ export const Navigation = ({ setPage, setErrors, updateChecker, errors, imgObjec
         const req = await axios.post("https://pcfy.redberryinternship.ge/api/laptop/create", formData, { headers: {
             "content-type": "multipart/form-data"
         } });
-        const res = await req.status;
+        const res = req.status;
 
+        setCanSend(false);
         emitResponse(res);
     }
 
@@ -85,7 +88,7 @@ export const Navigation = ({ setPage, setErrors, updateChecker, errors, imgObjec
         <>
             <div className="navWrapper">
                 <button onClick={handleBack}>უკან</button>
-                <button ref={sendBtn} onClick={(e) => handleSave(e)}>დამახსოვრება</button>
+                <button className={sending ? "sending" : ""} ref={sendBtn} onClick={(e) => handleSave(e)}>{sending ? "მახსოვრდება" : "დამახსოვრება"}</button>
             </div>
             <Postman className="postman" />
         </>

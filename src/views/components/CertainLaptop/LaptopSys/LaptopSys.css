@@ -4,11 +4,31 @@
   justify-content: space-between;
   align-items: center;
 }
+@media screen and (max-width: 965px) {
+  .laptopSysWrapper {
+    flex-direction: column;
+    row-gap: 30px;
+  }
+}
+@media screen and (max-width: 660px) {
+  .laptopSysWrapper {
+    row-gap: 0;
+  }
+}
 .laptopSysWrapper .col {
   display: flex;
   align-items: flex-start;
   -moz-column-gap: 80px;
        column-gap: 80px;
+}
+@media screen and (max-width: 660px) {
+  .laptopSysWrapper .col {
+    -moz-column-gap: 10.606vw;
+         column-gap: 10.606vw;
+    width: 100%;
+    -moz-column-gap: 12.3vw;
+         column-gap: 12.3vw;
+  }
 }
 .laptopSysWrapper .col .innerCol p {
   font-size: 22px;
@@ -17,10 +37,41 @@
   margin: 25px 0;
   font-weight: 500;
 }
+@media screen and (max-width: 660px) {
+  .laptopSysWrapper .col .innerCol p {
+    margin: 3.788vw 0;
+  }
+}
+@media screen and (max-width: 475px) {
+  .laptopSysWrapper .col .innerCol p {
+    font-size: 3.8vw;
+    line-height: 4vw;
+    white-space: nowrap;
+  }
+}
+@media screen and (max-width: 390px) {
+  .laptopSysWrapper .col .innerCol p {
+    margin: 0;
+    font-size: 3.59vw;
+    line-height: 6.41vw;
+  }
+}
+@media screen and (max-width: 660px) {
+  .laptopSysWrapper .col .innerCol p:first-child {
+    margin-top: 0;
+  }
+}
 .laptopSysWrapper .col .innerCol:nth-child(2) p {
   color: #797979;
   font-weight: 400;
 }
 .laptopSysWrapper .col:nth-child(2) {
   margin-right: 150px;
+}
+@media screen and (max-width: 965px) {
+  .laptopSysWrapper .col:nth-child(2) {
+    margin-right: unset;
+    -moz-column-gap: 19.7vw;
+         column-gap: 19.7vw;
+  }
 }/*# sourceMappingURL=LaptopSys.css.map */

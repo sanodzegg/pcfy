@@ -19,10 +19,10 @@
   width: 100%;
 }
 .aboutLaptopWrapper .aboutLaptop-col .dateInput.invalid input, .aboutLaptopWrapper .aboutLaptop-col .priceInput.invalid input {
-  border: 2px solid red;
+  border: 2px solid #E52F2F;
 }
 .aboutLaptopWrapper .aboutLaptop-col .dateInput.invalid label, .aboutLaptopWrapper .aboutLaptop-col .dateInput.invalid span, .aboutLaptopWrapper .aboutLaptop-col .priceInput.invalid label, .aboutLaptopWrapper .aboutLaptop-col .priceInput.invalid span {
-  color: red;
+  color: #E52F2F;
 }
 .aboutLaptopWrapper .aboutLaptop-col .dateInput label, .aboutLaptopWrapper .aboutLaptop-col .priceInput label {
   display: block;
@@ -68,7 +68,7 @@
   width: 100%;
 }
 .aboutLaptopWrapper .radioWrapper.invalid p {
-  color: red;
+  color: #E52F2F;
 }
 .aboutLaptopWrapper .radioWrapper .radioLabelWrapper.flex {
   display: flex;
