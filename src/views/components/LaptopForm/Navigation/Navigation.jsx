@@ -9,7 +9,7 @@ export const Navigation = ({ setPage, setErrors, updateChecker, errors, imgObjec
     const userData = JSON.parse(sessionStorage.getItem("userData"));
     const laptopData = JSON.parse(sessionStorage.getItem("laptopData"));
 
-    const [sendPressed, setSendPressed] = useState(false);
+    const [canSend, setCanSend] = useState(false);
 
     const sendBtn = useRef(null);
 
@@ -25,13 +25,12 @@ export const Navigation = ({ setPage, setErrors, updateChecker, errors, imgObjec
             handleBack();
         }
         
-        updateChecker(true);
         setErrors(true);
-        setSendPressed(!sendPressed);
+        setCanSend(true);
     }
 
     useEffect(() => {
-        let canSend = false;
+        updateChecker(true);
         const newErrors = [];
 
         errors.forEach(e => {
@@ -42,17 +41,17 @@ export const Navigation = ({ setPage, setErrors, updateChecker, errors, imgObjec
             } else newErrors.push(e);
         });
 
-        const valid = newErrors.every(e => e === true);
+        const invalid = newErrors.some(e => e !== true);
 
-        if(valid) {
-            canSend = true;
+        if(invalid) {
+            setCanSend(false);
         }
-
-        if(valid && canSend && sendPressed) {
+        
+        if(!invalid && canSend) {
             sendData();
         }
 
-    }, [errors, sendPressed]);
+    }, [errors, canSend]);
 
     const sendData = async () => {
         const formData = new FormData();
