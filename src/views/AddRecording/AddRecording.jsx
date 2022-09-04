@@ -55,7 +55,7 @@ export const AddRecording = () => {
     }
 
     const handleLaptopNavigate = () => {
-        const lpav = sessionStorage.getItem("lpav") ? true : false;
+        const lpav = sessionStorage.getItem("lpav") === "true" ? true : false;
         if(lpav) {
             setDisplayForm(1);
             sessionStorage.setItem("formPage", 1);

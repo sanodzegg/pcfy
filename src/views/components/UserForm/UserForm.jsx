@@ -48,12 +48,13 @@ export const UserForm = ({ setPage, emitUserTrue }) => {
 
   const handleNext = async (e) => {
     e.preventDefault();
-    setChecker(true);
     setShowErrs(true);
     setCanSend(true);
   }
 
   useEffect(() => {
+    setChecker(true);
+    
     const notNull = Object.values(basicErrs).some(e => e.valid || e.valid === false);
     if(notNull) {
       const errObj = {...basicErrs, ...posErrs, ...contactErrs};
@@ -76,6 +77,7 @@ export const UserForm = ({ setPage, emitUserTrue }) => {
 
       if(invalid) {
         setCanSend(false);
+        sessionStorage.setItem("lpav", false);
       } else sessionStorage.setItem("lpav", true);
 
       if(!invalid && canSend) {

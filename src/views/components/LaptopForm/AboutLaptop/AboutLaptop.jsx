@@ -116,14 +116,14 @@ export const AboutLaptop = ({ emitErrors, errors, show, emitData, revalidate }) 
                     {(show && !errors.state) && <Errormark className="error" />}
                 </div>
                 <div className="radios">
-                    <div className="customRadio">
-                    <div className="customRadioWrapper" onClick={handleNew}>
+                    <div className="customRadio" onClick={handleNew}>
+                    <div className="customRadioWrapper">
                         <div className="radioInside" ref={radioNew}></div>
                     </div>
                     <span>ახალი</span>
                     </div>
-                    <div className="customRadio">
-                    <div className="customRadioWrapper" onClick={handleUsed}>
+                    <div className="customRadio" onClick={handleUsed}>
+                    <div className="customRadioWrapper">
                         <div className="radioInside" ref={radioUsed}></div>
                     </div>
                     <span>მეორადი</span>

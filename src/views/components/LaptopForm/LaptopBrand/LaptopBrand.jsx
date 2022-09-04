@@ -14,7 +14,7 @@ export const LaptopBrand = ({ errors, show, emitData, emitErrors, setLeptopID, r
   const [chosenBrand, setChosenBrand] = useState(data?.laptop_brand_id ? data.laptop_brand_id : {});
 
   const handleNameInput = () => {
-    const regex = /^[a-zA-Z0-9!@#$%*&=()\\-`.+ ,/\"]*$/i;
+    const regex = /^[a-zA-Z0-9 !@#$%^&*()_+=\"]*$/i;
     emitData((prev) => ({
       ...prev,
       laptop_name: laptopName

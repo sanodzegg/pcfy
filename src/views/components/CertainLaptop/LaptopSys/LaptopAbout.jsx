@@ -3,7 +3,6 @@ import "./LaptopSys.css";
 export const LaptopSys = ({ laptopData, brand }) => {
     const brandName = brand && brand.filter(e => e.id === laptopData.brand_id)[0].name;
 
-    console.log(laptopData);
     return (
         <div className="laptopSysWrapper">
             <div className="col">

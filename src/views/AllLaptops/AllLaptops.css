@@ -3,6 +3,11 @@
   margin: 0 auto;
   margin-bottom: 150px;
 }
+@media screen and (max-width: 925px) {
+  .recordings {
+    margin-bottom: 10vw;
+  }
+}
 .recordings .phoneExit {
   left: 3vw;
   top: 10.5vw;

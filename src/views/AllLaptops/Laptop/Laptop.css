@@ -27,7 +27,10 @@
 }
 @media screen and (max-width: 460px) {
   .laptopWrapper .laptopImgWrapper {
-    height: 115%;
+    max-width: 165px;
+    width: 100%;
+    height: 100%;
+    max-height: 110px;
   }
 }
 .laptopWrapper .laptopImgWrapper img {
@@ -41,6 +44,11 @@
   font-size: 18px;
   line-height: 21px;
   font-weight: 400;
+}
+@media screen and (max-width: 460px) {
+  .laptopWrapper .laptopInfoWrapper {
+    width: 140px;
+  }
 }
 .laptopWrapper .laptopInfoWrapper .userName {
   font-weight: 500;

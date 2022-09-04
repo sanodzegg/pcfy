@@ -1,0 +1,23 @@
+.errorPageWrapper {
+  background-color: #62A0EA;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.errorPageWrapper h1 {
+  font-size: 5vw;
+  color: #FFF;
+}
+.errorPageWrapper button {
+  margin-top: 35px;
+  color: #62A0EA;
+  border-radius: 10px;
+  padding: 15px 40px;
+  font-size: 1vw;
+  border: unset;
+  outline: unset;
+  cursor: pointer;
+}/*# sourceMappingURL=ErrorPage.css.map */

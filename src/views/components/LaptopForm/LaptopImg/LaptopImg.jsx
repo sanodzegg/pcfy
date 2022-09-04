@@ -161,7 +161,7 @@ export const LaptopImg = ({ err, emitImage, show, emitData, emitIMGObj }) => {
             {!showImage &&
             <>
             {phoneWidth && <PhoneImg />}
-            <span>ჩააგდე ან ატვირთე ლეპტოპის ფოტო</span>
+            <span>{phoneWidth ? "ლეპტოპის ფოტოს ატვირთვა" : "ჩააგდე ან ატვირთე ლეპტოპის ფოტო"}</span>
             <button onClick={(e) => handleImgUpload(e)}>ატვირთე</button>
             </>
             }
