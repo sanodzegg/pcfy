@@ -5,6 +5,7 @@ import "./SystemForm.css"
 
 import { ReactComponent as Arrow } from "assets/svg/selectArrow.svg";
 import { ReactComponent as ErrorMark } from "assets/svg/error.svg";
+import { useOnOutsideClick } from "hooks/useOutside";
 
 export const SystemForm = ({ laptopSet, errors, show, ID, emitData, emitErrors, revalidate }) => {
 
@@ -22,6 +23,7 @@ export const SystemForm = ({ laptopSet, errors, show, ID, emitData, emitErrors, 
 
   const ssdRadio = useRef(null);
   const hddRadio = useRef(null);
+  const cpuRef = useRef(null);
 
   useEffect(() => {
     if(data?.laptop_brand_id) {
@@ -51,6 +53,8 @@ export const SystemForm = ({ laptopSet, errors, show, ID, emitData, emitErrors, 
       data.laptop_hard_drive_type === "SSD" ? handleSSD() : handleHDD();
     }
   }, []);
+  
+  useOnOutsideClick(cpuRef, () => setDisplayCPU(false));
 
   useEffect(() => {
     if(revalidate) {
@@ -143,7 +147,7 @@ export const SystemForm = ({ laptopSet, errors, show, ID, emitData, emitErrors, 
   return (
     <div className="systemFormWrapper">
       <div className="formWrapper-row">
-        <div onClick={() => setDisplayCPU(!displayCPU)} className={classes.cpuClass}><span>{selectCPU?.name ? selectCPU.name : "CPU"}</span><Arrow className={displayCPU ? "displayed" : null} />
+        <div ref={cpuRef} onClick={() => setDisplayCPU(!displayCPU)} className={classes.cpuClass}><span>{selectCPU?.name ? selectCPU.name : "CPU"}</span><Arrow className={displayCPU ? "displayed" : null} />
           {displayCPU &&
             <div className="cpuOptions">
                 {cpuOptions.map((e, i) => {

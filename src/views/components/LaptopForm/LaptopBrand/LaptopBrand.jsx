@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import axios from "axios"
 
 import { ReactComponent as Arrow } from "assets/svg/selectArrow.svg";
+import { useOnOutsideClick } from "hooks/useOutside";
 
 export const LaptopBrand = ({ errors, show, emitData, emitErrors, setLeptopID, revalidate }) => {
 
@@ -12,6 +13,8 @@ export const LaptopBrand = ({ errors, show, emitData, emitErrors, setLeptopID, r
   const [laptopBrands, setLaptopBrands] = useState([]);
 
   const [chosenBrand, setChosenBrand] = useState(data?.laptop_brand_id ? data.laptop_brand_id : {});
+
+  const brandsRef = useRef(null);
 
   const handleNameInput = () => {
     const regex = /^[a-zA-Z0-9 !@#$%^&*()_+=\"]*$/i;
@@ -41,6 +44,8 @@ export const LaptopBrand = ({ errors, show, emitData, emitErrors, setLeptopID, r
 
     getBrands();
   }, []);
+
+  useOnOutsideClick(brandsRef, () => setDisplayBrands(false));
 
   const handleLaptopBrand = (e) => {
     setChosenBrand(e);
@@ -87,7 +92,7 @@ export const LaptopBrand = ({ errors, show, emitData, emitErrors, setLeptopID, r
             <span>ლათინური ასოები, ციფრები, !@#$%^&*()_+=</span>
         </div>
         <div className={classes.brandInput}>
-            <div onClick={() => setDisplayBrands(!displayBrands)} className={`laptopSelector${displayBrands ? " displaying" : ""}`}><span>{chosenBrand.name ? chosenBrand.name : "ლეპტოპის ბრენდი"}</span><Arrow className={displayBrands ? "displayed" : null} />
+            <div ref={brandsRef} onClick={() => setDisplayBrands(!displayBrands)} className={`laptopSelector${displayBrands ? " displaying" : ""}`}><span>{chosenBrand.name ? chosenBrand.name : "ლეპტოპის ბრენდი"}</span><Arrow className={displayBrands ? "displayed" : null} />
             {displayBrands && 
                 <div className="laptopOptions">
                     {laptopBrands.map((e, i) => {

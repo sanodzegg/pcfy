@@ -2,6 +2,7 @@ import { ReactComponent as Arrow } from "assets/svg/selectArrow.svg";
 
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
+import { useOnOutsideClick } from "hooks/useOutside";
 
 export const UserPosition = ({ revalidate, errs, show, setErrs, emitData }) => {
     const data = JSON.parse(sessionStorage.getItem("userData"));
@@ -79,6 +80,9 @@ export const UserPosition = ({ revalidate, errs, show, setErrs, emitData }) => {
       const options = data.filter((e) => e.team_id === selectedTeam.id);
       setOptionsData(options);
     }
+
+    useOnOutsideClick(teamRef, () => setDisplayTeam(false));
+    useOnOutsideClick(posRef, () => setDisplayPos(false));
   
     useEffect(() => {
       const getPositions = async () => {
@@ -108,6 +112,7 @@ export const UserPosition = ({ revalidate, errs, show, setErrs, emitData }) => {
         }));
       }
     }, [revalidate]);
+
 
     const posArr = Object.values(selectedPos).length;
 
