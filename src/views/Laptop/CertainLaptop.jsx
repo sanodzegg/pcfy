@@ -43,9 +43,13 @@ export const CertainLaptop = () => {
 
     useEffect(() => {
         const getCertainLaptop = async () => {
-            const res = await axios.get(`https://pcfy.redberryinternship.ge/api/laptop/${params.id}?token=${process.env.REACT_APP_TOKEN}`);
-            const data = await res.data.data;
-            setLaptopInfo(data);
+            try {
+                const res = await axios.get(`https://pcfy.redberryinternship.ge/api/laptop/${params.id}?token=${process.env.REACT_APP_TOKEN}`);
+                const data = await res.data.data;
+                setLaptopInfo(data);
+            } catch(err) {
+                navigate("snap");
+            }
         }
 
         getCertainLaptop();

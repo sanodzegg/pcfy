@@ -100,7 +100,7 @@
 }
 @media screen and (max-width: 475px) {
   .laptopAboutWrapper .col:nth-child(2) span {
-    margin-left: 63px;
+    margin-left: 65px;
   }
 }
 @media screen and (max-width: 380px) {
