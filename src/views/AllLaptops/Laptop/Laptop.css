@@ -3,7 +3,8 @@
   background-color: #EAFAFF;
   border: 1px solid #AED1EA;
   border-radius: 20px;
-  max-width: 565px;
+  min-width: 545px;
+  max-width: 545px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -13,6 +14,11 @@
 @media screen and (max-width: 925px) {
   .laptopWrapper {
     max-width: unset;
+  }
+}
+@media screen and (max-width: 575px) {
+  .laptopWrapper {
+    min-width: unset;
   }
 }
 .laptopWrapper .laptopImgWrapper {

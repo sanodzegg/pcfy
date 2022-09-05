@@ -3,7 +3,8 @@
     background-color: #EAFAFF
     border: 1px solid #AED1EA
     border-radius: 20px
-    max-width: 565px
+    min-width: 545px
+    max-width: 545px
 
     display: flex
     align-items: center
@@ -11,6 +12,8 @@
     column-gap: 30px
     @media screen and ( max-width: 925px )
         max-width: unset
+    @media screen and ( max-width: 575px )
+        min-width: unset
     .laptopImgWrapper
         width: 265px
         height: 180px

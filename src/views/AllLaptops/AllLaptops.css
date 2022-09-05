@@ -47,7 +47,7 @@
   row-gap: 55px;
   padding: 0 15px;
 }
-@media screen and (max-width: 1065px) {
+@media screen and (max-width: 1185px) {
   .recordings .laptopList {
     grid-template-columns: auto;
     justify-content: center;
