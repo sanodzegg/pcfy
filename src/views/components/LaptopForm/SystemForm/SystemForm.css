@@ -164,6 +164,7 @@
 }
 .systemFormWrapper .formWrapper-row .radioWrapper .radios .customRadio span {
   margin-left: 10px;
+  font-weight: 400;
 }
 .systemFormWrapper .formWrapper-row .radioWrapper .radios .customRadio .customRadioWrapper {
   width: 20px;

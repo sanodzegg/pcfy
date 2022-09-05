@@ -11,7 +11,7 @@ import { UserBasic } from "./UserBasic/UserBasic";
 import { UserPosition } from "./UserPosition/UserPosition";
 import { UserContact } from "./UserContact/UserContact";
 
-export const UserForm = ({ setPage, emitUserTrue }) => {
+export const UserForm = ({ setPage }) => {
 
   const [checker, setChecker] = useState(false);
   const [showErrs, setShowErrs] = useState(false);
@@ -55,18 +55,24 @@ export const UserForm = ({ setPage, emitUserTrue }) => {
   useEffect(() => {
     setChecker(true);
     
-    const notNull = Object.values(basicErrs).some(e => e.valid || e.valid === false);
+    const errArr = [];
+    const errObj = { ...basicErrs, ...posErrs, ...contactErrs };
+
+    Object.values(errObj).forEach(e => {
+      if(e !== null && typeof e === "object") {
+        errArr.push(e.valid);
+      } else errArr.push(e);
+    });
+
+    const notNull = errArr.every(e => e === true);
+
+    if(!notNull) {
+      setCanSend(false);
+      sessionStorage.setItem("lpav", false);
+    } else sessionStorage.setItem("lpav", true);
+
     if(notNull) {
-      const errObj = {...basicErrs, ...posErrs, ...contactErrs};
-      const inner = [];
-
-      Object.values(errObj).map(e => {
-        if(e !== null && typeof e === "object") {
-          Object.values(e).filter(y => typeof y === "boolean" && inner.push(y));
-        } else inner.push(e);
-      });
-
-      const invalid = inner.some(e => e !== true);
+      const invalid = errArr.some(e => e !== true);
 
       const {team_id, position, ...recording} = localData;
 
@@ -74,11 +80,6 @@ export const UserForm = ({ setPage, emitUserTrue }) => {
         recording.team_id = localData.team_id.id;
         recording.position = localData.position.id;
       }
-
-      if(invalid) {
-        setCanSend(false);
-        sessionStorage.setItem("lpav", false);
-      } else sessionStorage.setItem("lpav", true);
 
       if(!invalid && canSend) {
         sessionStorage.setItem("formPage", 1);

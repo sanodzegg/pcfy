@@ -56,6 +56,7 @@
 .laptopWrapper .laptopInfoWrapper .laptop {
   margin-top: 20px;
   margin-bottom: 40px;
+  font-weight: 400;
 }
 @media screen and (max-width: 925px) {
   .laptopWrapper .laptopInfoWrapper .laptop {
@@ -66,5 +67,6 @@
   font-size: 16px;
   color: #4386a9;
   text-decoration: underline;
+  font-weight: 400;
   cursor: pointer;
 }/*# sourceMappingURL=Laptop.css.map */

@@ -17,7 +17,8 @@
 }
 @media screen and (max-width: 965px) {
   .laptopInfo .IMGWrapper {
-    width: 110%;
+    width: 100%;
+    max-width: 715px;
   }
 }
 @media screen and (max-width: 660px) {
@@ -52,6 +53,7 @@
   color: #2E2E2E;
   margin: 25px 0;
   font-weight: 500;
+  white-space: nowrap;
 }
 @media screen and (max-width: 660px) {
   .laptopInfo .info .col p {

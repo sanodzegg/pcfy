@@ -24,7 +24,7 @@ export const LaptopInfo = ({ imgSrc, userData, team, pos }) => {
                     <p>{userData.name} {userData.surname}</p>
                     <p>{teamName}</p>
                     <p>{posName}</p>
-                    <p>{userData.email}</p>
+                    <p>{userData.email.length > 13 ? `${userData.email.slice(0, 13)}...` : userData.email}</p>
                     <p>{`+${parsed}`}</p>
                 </div>
             </div>

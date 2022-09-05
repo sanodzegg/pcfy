@@ -63,6 +63,7 @@
   border-radius: 10px;
   max-width: 385px;
   cursor: pointer;
+  font-weight: 500;
   font-size: 20px !important;
 }
 @media screen and (max-width: 390px) {
@@ -78,4 +79,5 @@
   line-height: 25px;
   color: #0089A7;
   cursor: pointer;
+  font-weight: 500;
 }/*# sourceMappingURL=SuccessPopup.css.map */

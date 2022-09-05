@@ -102,6 +102,7 @@
 }
 .aboutLaptopWrapper .radioWrapper .radios .customRadio span {
   margin-left: 10px;
+  font-weight: 400;
 }
 .aboutLaptopWrapper .radioWrapper .radios .customRadio .customRadioWrapper {
   width: 20px;

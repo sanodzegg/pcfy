@@ -22,6 +22,7 @@
   border-radius: 10px;
   max-width: 385px;
   cursor: pointer;
+  font-weight: 500;
 }
 @media screen and (max-width: 715px) {
   .navWrapper button {

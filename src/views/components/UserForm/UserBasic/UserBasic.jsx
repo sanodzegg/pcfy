@@ -15,10 +15,9 @@ export const UserBasic = ({ revalidate, errs, show, setErrs, emitData }) => {
         ...prev,
         firstName: {
           valid: true,
-          message: ""
         }
       }));
-    } else if(fnValue.length < 2) {
+    } else if(fnValue.length < 2 && fnValue.length !== 0) {
       setErrs((prev) => ({
         ...prev,
         firstName: {
@@ -44,10 +43,9 @@ export const UserBasic = ({ revalidate, errs, show, setErrs, emitData }) => {
         ...prev,
         lastName: {
           valid: true,
-          message: ""
         }
       }));
-    } else if(lnValue.length < 2) {
+    } else if(lnValue.length < 2 && lnValue.length !== 0) {
       setErrs((prev) => ({
         ...prev,
         lastName: {
@@ -75,13 +73,13 @@ export const UserBasic = ({ revalidate, errs, show, setErrs, emitData }) => {
 
   return (
     <div className="userFN">
-        <div className={show && errs.firstName.valid == false ? "invalid" : ""}>
+        <div className={show && errs.firstName.valid === false ? "invalid" : ""}>
             <label htmlFor="fname">სახელი</label>
             <input onChange={(e) => setfnValue(e.target.value)} onBlur={handleFN} type="text" placeholder="გრიშა" name="fname" value={fnValue ? fnValue : ""} />
             <span>{errs.firstName.message ? errs.firstName.message : "მინიმუმ 2 სიმბოლო, ქართული ასოები"}</span>
         </div>
 
-        <div className={show && errs.lastName.valid == false ? "invalid" : ""}>
+        <div className={show && errs.lastName.valid === false ? "invalid" : ""}>
             <label htmlFor="lname">გვარი</label>
             <input onChange={(e) => setlnValue(e.target.value)} onBlur={handleLN} type="text" placeholder="ბაგრატიონი" name="lname" value={lnValue ? lnValue : ""} />
             <span>{errs.lastName.message ? errs.lastName.message : "მინიმუმ 2 სიმბოლო, ქართული ასოები"}</span>

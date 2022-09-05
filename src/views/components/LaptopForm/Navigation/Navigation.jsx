@@ -75,13 +75,18 @@ export const Navigation = ({ setPage, setErrors, updateChecker, errors, imgObjec
             formData.append(pair[0], pair[1]);
         });
 
-        const req = await axios.post("https://pcfy.redberryinternship.ge/api/laptop/create", formData, { headers: {
-            "content-type": "multipart/form-data"
-        } });
-        const res = req.status;
+        try {
+            const req = await axios.post("https://pcfy.redberryinternship.ge/api/laptop/create", formData, { headers: {
+                "content-type": "multipart/form-data"
+            } });
+            const res = req.status;
+            emitResponse(res);
+        } catch(err) {
+            const errResp = await err.response.status;
+            emitResponse(errResp);
+        }
 
         setCanSend(false);
-        emitResponse(res);
     }
 
     return (

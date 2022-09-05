@@ -65,6 +65,7 @@
   border-radius: 10px;
   max-width: 385px;
   cursor: pointer;
+  font-weight: 500;
   font-size: 20px;
   margin-top: 65px;
 }
@@ -116,6 +117,7 @@
   border-radius: 10px;
   max-width: 385px;
   cursor: pointer;
+  font-weight: 500;
   padding: 18px 25px;
   font-size: 20px;
   line-height: 25px;
@@ -136,6 +138,9 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
+}
+.laptopFormWrapper form .uploadInfoWrapper .fileInfo span {
+  font-weight: 400;
 }
 @media screen and (max-width: 670px) {
   .laptopFormWrapper form .uploadInfoWrapper .fileInfo {
