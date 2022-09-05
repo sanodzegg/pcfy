@@ -6,6 +6,7 @@ import { ReactComponent as Errormark } from "assets/svg/error.svg";
 export const AboutLaptop = ({ emitErrors, errors, show, emitData, revalidate }) => {
 
     const data = JSON.parse(sessionStorage.getItem("laptopData"));
+    const now = new Date().getFullYear();
 
     const [date, setDate] = useState(data?.laptop_purchase_date ? data.laptop_purchase_date : "");
     const [localDate, setLocalDate] = useState(data?.purchase_date_local ? data.purchase_date_local : "");
@@ -42,9 +43,11 @@ export const AboutLaptop = ({ emitErrors, errors, show, emitData, revalidate }) 
 
     const handleDateChange = (val) => {
         setLocalDate(val);
-        emitErrors((prev) => ({ ...prev, date: true }));
 
-        if(val) {
+        const newArr = val.split("-");
+        const yy = newArr[0];
+
+        if(val && (yy > 1990 && yy <= now)) {
             emitErrors((prev) => ({ ...prev, date: true }));
         } else emitErrors((prev) => ({ ...prev, date: false }));
     }
@@ -55,14 +58,13 @@ export const AboutLaptop = ({ emitErrors, errors, show, emitData, revalidate }) 
             const yy = newArr[0];
             const mm = newArr[1];
             const dd = newArr[2];
-            const newDate = `${dd}-${mm}-${yy}`;
 
-            const now = new Date().getFullYear();
-
-            yy > 1990 && yy <= now ? 
-            emitErrors((prev) => ({ ...prev, date: true })) : emitErrors((prev) => ({ ...prev, date: false }));
+            if(yy > 1990 && yy <= now) {
+                const newDate = `${dd}-${mm}-${yy}`;
+                setDate(newDate);
+                emitErrors((prev) => ({ ...prev, date: true })) ;
+            } else emitErrors((prev) => ({ ...prev, date: false }));
             
-            setDate(newDate);
         } else {emitErrors((prev) => ({ ...prev, date: true })); setDate("")};
     }
 

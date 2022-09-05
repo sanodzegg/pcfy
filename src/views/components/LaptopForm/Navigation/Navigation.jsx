@@ -48,7 +48,7 @@ export const Navigation = ({ setPage, setErrors, updateChecker, errors, imgObjec
             setCanSend(false);
         }
 
-        if(!invalid && canSend) {
+        if(!sending && !invalid && canSend) {
             setSending(true);
             sendData();
         }
@@ -85,7 +85,6 @@ export const Navigation = ({ setPage, setErrors, updateChecker, errors, imgObjec
             const errResp = await err.response.status;
             emitResponse(errResp);
         }
-
         setCanSend(false);
     }
 

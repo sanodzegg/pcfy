@@ -32,6 +32,7 @@
 }
 .navWrapper button.sending {
   background-color: #759ecd;
+  pointer-events: none;
 }
 .navWrapper button:nth-child(1) {
   background-color: transparent !important;
